@@ -1,0 +1,53 @@
+﻿@model List<QuotationApproval>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="col-12">
+    <div class="card good-Receipt overflow-auto">
+        <div class="card-body">
+            <h5 class="card-title">Quotation Approval Overview</h5>
+
+            <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr class="text-center">
+                        <th scope="col ">Request No :</th>
+                        <th scope="col ">Quotation</th>
+
+                        <th scope="col ">Total Amount</th>
+                        <th scope="col ">Action</th>
+                        
+                        
+                    </tr>
+                </thead>
+
+                <tbody >
+                    @foreach(var quotation in Model)
+                    {
+                         <tr class="text-center">
+                        <td >@quotation.RequestNo</td>
+                         <td>@quotation.Quotation</td>
+                         <td>$@quotation.TotalAmount</td>
+                          <td class="quotation-btn">
+                                    <a>
+                             <button style="border:none; border-radius:3px" class="accept-btn bg-success text-light">
+                               Accept
+                             </button>
+                                    </a>
+                                    <a>
+                               <button style="border:none; border-radius:3px" class="reject-btn bg-danger text-light">
+                              Reject
+                              </button>
+                                    </a>
+
+                          </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            </div>
+        </div>
+    </div>
+</div>
+

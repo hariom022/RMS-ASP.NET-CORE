@@ -1,0 +1,37 @@
+﻿@model List<InventoryStatusReport>
+
+
+<div class="col-12">
+    <div class="card good-Receipt overflow-auto">
+        <div class="card-body">
+            <h5 class="card-title">Inventory Status Report / This Month</h5>
+            <div style="width: 100%; overflow-x: auto">
+                <table class="table table-hover">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Item Name</th>
+                            <th>Quantity Available</th>
+                            <th>Minimum Quantity</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Example data, replace with actual data from your database -->
+
+                        @foreach(var item in Model)
+                        {
+                            <tr>
+                                <td>@item.ItemName</td>
+                                <td>@item.QuantityAvailable</td>
+                                <td>@item.MinimumQuantity</td>
+                                <td><span class="badge bg-success">@item.Status</span></td>
+                            </tr>
+                        }
+                       
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

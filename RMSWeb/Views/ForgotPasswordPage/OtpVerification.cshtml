@@ -1,0 +1,30 @@
+﻿
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                
+                <div class="card-header text-center">
+                    <h3>OTP Verification</h3>
+                </div>
+                <div class="card-body">
+                    <p class="text-center">Enter the OTP sent to your phone/email</p>
+                    <div class="input-group">
+                        <input type="text"
+                               class="form-control"
+                               placeholder="Enter OTP"
+                               aria-label="Enter OTP"
+                               aria-describedby="btn-verify"
+                               maxlength="6"
+                               required />
+                    </div>
+                    <button type="submit" class="btn btn-verify text-center mt-3" id="btn-verify" style="outline:none">
+                        <a asp-controller="ForgotPasswordPage" asp-action="PasswordResetSuccess" class="text-light bg-primary" style="text-decoration: none; padding:10px 30px ; border-radius:5px ; outline:none">
+                            Verify OTP
+                        </a>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

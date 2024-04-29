@@ -1,7 +1,29 @@
+using Microsoft.EntityFrameworkCore;
+using RMS.DataAccess.Data;
+using RMS.DataAccess.Repository;
+using RMS.DataAccess.Repository.IRepository;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+
+
+var provider = builder.Services.BuildServiceProvider();
+var config= provider.GetRequiredService<IConfiguration>();
+builder.Services.AddDbContext<ApplicationDbContext>(item => item.UseSqlServer(config.GetConnectionString("dbcs")));
+
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<IPlantRepository, PlantRepository>();
+
+/*
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+options.UseSqlServer(builder.Configuration.GetConnectionString("dbcs")));
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<IPlantRepository, PlantRepository>();
+*/
+
 
 var app = builder.Build();
 
@@ -19,9 +41,9 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
-
+//app.MapDefaultControllerRoute();
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Dashboard}/{action=Overview}/{id?}");
 
 app.Run();

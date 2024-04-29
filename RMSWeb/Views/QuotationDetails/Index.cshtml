@@ -1,0 +1,58 @@
+﻿@model RMS.Models.QuotationDetailsViewModel
+@{
+}
+
+ <div class="col-12 mt-4">
+        <div class="d-flex justify-content-between">
+          <p class="bg-secondary p-3 text-light">Request No: @Model.RequestNo</p>
+          <p class="bg-secondary p-3 text-light">Quotation ID: @Model.QuotationId</p>
+          <p class="bg-secondary p-3 text-light">Date : @Model.Date</p>
+        </div>
+        <div class="card good-Receipt overflow-auto">
+          <div class="card-body">
+            <h5 class="card-title">Quotation Details</h5>
+            <div style="width: 100%; overflow-x: auto">
+              <table class="table">
+                <thead>
+                  <tr class="text-center">
+                    <th scope="col ">Material Code</th>
+                    <th scope="col ">Material Type</th>
+                    <th scope="col ">UOM</th>
+                    <th scope="col ">Quantity</th>
+                    <th scope="col ">Rate</th>
+                    <th scope="col ">Total</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                        @foreach (var item in Model.QuotationsData)
+                        {
+                            <tr class="text-center">
+                                <td class="fw-normal">@item.MaterialCode</td>
+                                <td>@item.MaterialType</td>
+                                <td>@item.Uom</td>
+                                <td>@item.Quantity</td>
+                                <td>@item.Rate</td>
+                                <td>@item.Total</td>
+                            </tr>
+                        }
+                       
+                
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <hr />
+          <div class="text-end p-5">
+            <p class="fw-bold">Total Quotation Amount : $2930</p>
+          </div>
+        </div>
+        <div class="btn-container text-center">
+          <a href="#">
+            <button class=" bg-success text-light " style="border:none; border-radius:3px">Accept</button>
+          </a>
+          <a href="#">
+            <button class=" bg-danger text-light" style="border:none;border-radius:3px">Reject</button>
+          </a>
+        </div>
+      </div>

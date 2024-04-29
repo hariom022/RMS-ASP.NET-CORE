@@ -1,0 +1,81 @@
+﻿@model RMS.Models.GoodReceiptDetailViewModel
+
+<div class="col-12">
+    <div class="card good-Receipt overflow-auto">
+        <div class="card-body">
+            <h5 class="card-title">Good Receipt Confirmation</h5>
+
+            <!-- First Table -->
+            <table class="table table-hover table-bordered" style="width: 100%">
+                <!-- Table Headers -->
+                <thead>
+                    <tr>
+                        <th scope="col" colspan="2" class="text-center">Material Code</th>
+                    </tr>
+                </thead>
+                <!-- Table Body -->
+                <tbody>
+                    <!-- Table Rows -->
+                    <tr class="text-center">
+                        <td>Request No: @Model.RequestNo</td>
+                        <td>Quotation No : @Model.QuotationNo</td>
+                    </tr>
+                    <tr class="text-center">
+                        <td>Sales No: @Model.SalesNo</td>
+                        <td>OBD No: @Model.OBDNo</td>
+                    </tr>
+                    <tr class="text-center">
+                        <td>Date : @Model.GRDate.ToShortDateString()</td>
+                        <td>SKU Quantity : @Model.TotalSKUQuantity</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- Second Table -->
+            <div style="width: 100%; overflow-x: auto">
+                <table class="table table-hover table-bordered" style="margin-bottom: 0px !important">
+                    <!-- Table Headers -->
+                    <thead>
+                        <tr>
+                            <th scope="col">Material Code</th>
+                            <th scope="col">Material Type</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">UOM</th>
+                            <th scope="col">Rate</th>
+                            <th scope="col">Total</th>
+                        </tr>
+                    </thead>
+                    <!-- Table Body -->
+                    <tbody>
+                        <!-- Table Rows -->
+                        @foreach (var item in Model.goodReceiptDetails)
+                        {
+                            <tr>
+                                <th scope="row">@item.MaterialCode</th>
+                                <td>@item.MaterialType</td>
+                                <td>@item.Quantity</td>
+                                <td>@item.UOM</td>
+                                <td>$@item.Rate</td>
+                                <td>$@item.Total</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <!-- Total Receipt -->
+                <div class="total-receipt text-end mt-5 fw-bold">
+                    <p>Total Received Quantity : @Model.TotalReceivedQuantity</p>
+                    <p>Total Receipt Amount $@Model.TotalReceiptAmount.ToString("0.00")</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Buttons -->
+    <div class="btn-container text-center">
+        <a href="#">
+            <button class="accept-btn bg-success text-light " style="border:none; border-radius:3px">Accept</button>
+        </a>
+        <a href="#">
+            <button class="reject-btn bg-danger text-light" style="border:none;border-radius:3px">Reject</button>
+        </a>
+    </div>
+</div>

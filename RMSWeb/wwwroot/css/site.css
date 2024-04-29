@@ -20,3 +20,38 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.inventoryUpdate .updated-btn {
+    display: flex !important;
+    justify-content: space-between !important;
+}
+.inventoryUpdate .download-btn {
+    display:flex ;
+}
+    .accept-btn {
+    padding: 5px 12px !important;
+}
+.reject-btn {
+    padding: 5px 12px !important;
+}
+
+@media screen and (max-width: 500px) {
+    .accept-btn {
+        
+
+    }
+    .reject-btn{
+        margin-top:10px !important;
+    }
+    
+}
+@media screen and (max-width: 400px) {
+    .inventoryUpdate .updated-btn {
+        display: block !important;
+    }
+    .inventoryUpdate .download-btn {
+        display: block !important;
+    }
+}
+
+

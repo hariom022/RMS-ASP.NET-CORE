@@ -1,0 +1,40 @@
+﻿@model List<SalesOrderDetails>
+
+<div class="col-12">
+    <div class="card good-Receipt overflow-auto">
+        <div class="card-body">
+            <h5 class="card-title">Sales Order Details Report</h5>
+            <div style="width: 100%; overflow-x: auto">
+                <table class="table table-hover">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Product Name</th>
+                            <th>Quantity</th>
+                            <th>Unit Price</th>
+                            <th>Total Price</th>
+                            <th>Customer Name</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Example data, replace with actual data from your database -->
+
+                        @foreach(var item in Model)
+                        {
+                            <tr>
+                                <td>@item.OrderId</td>
+                                <td>@item.ProductName</td>
+                                <td>@item.Quantity</td>
+                                <td>$@item.UnitPrice</td>
+                                <td>$@item.TotalPrice</td>
+                                <td>@item.CustomerName</td>
+                                <td>@item.Date.ToString("dd/MM/yyyy")</td>
+                            </tr>
+                        }     
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

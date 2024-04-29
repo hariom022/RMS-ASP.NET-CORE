@@ -1,0 +1,65 @@
+﻿@model List<InventoryUpdateOverview>
+
+
+<div class="col-12 inventoryUpdate">
+    <div class="card good-Receipt overflow-auto">
+        <div class="card-body">
+            <h5 class="card-title">Inventory Update</h5>
+
+            <div class="updated-btn mb-4 d-flex justify-content-between">
+                <button class="p-2 bg-primary text-light m-2"
+                        style="border: none; border-radius: 5px">
+                    <a asp-action="" class="text-light bg-primary"> + Add new field </a>
+                </button>
+                <div class="download-btn m-2">
+                    <a asp-controller="InventoryUpdateOverview" asp-action="TemplateDownload">
+                        <button class="p-2 text-light bg-primary m-1"
+                                style="border: none; border-radius: 5px">
+                            Download file
+                        </button>
+                    </a>
+                    <a asp-controller="InventoryUpdateOverview" asp-action="TemplateUpload">
+                        <button class="p-2 text-light bg-primary m-1"
+                                style="border: none; border-radius: 5px">
+                            Upload file
+                        </button>
+                    </a>
+                </div>
+            </div>
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-12 col-sm-11 col-11">
+                    <div class="table-stock-info"
+                         style="overflow-x: auto; width: 100%">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr class="text-center">
+                                    <th scope="col">Product Code</th>
+                                    <th scope="col">Description</th>
+                                    <th scope="col">UOM</th>
+                                    <th scope="col">Open Stock</th>
+                                    <th scope="col">Consumption</th>
+                                    <th scope="col">Plant/Hospital Id</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach(var item in Model)
+                                {
+                                    <tr class="text-center">
+                                        <th scope="row">@item.ProductCode</th>
+                                        <td>@item.Description</td>
+                                        <td>@item.Uom</td>
+                                        <td>@item.OpenStock</td>
+                                        <td>@item.Consumption</td>
+                                        <td>@item.Plant</td>
+                                    </tr>
+                                }
+                               
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,43 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<div class="col-12">
+    <div class="card good-Receipt overflow-auto">
+        <div class="card-body">
+            <h5 class="card-title">Template Download Page</h5>
+
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Inventory Template</h5>
+                    <p class="card-text">
+                        Download the template for managing inventory.
+                    </p>
+                    <a href="path_to_inventory_template.xlsx"
+                       download
+                       class="btn btn-primary">Download</a>
+                </div>
+            </div>
+            <div class="card mt-3">
+                <div class="card-body">
+                    <h5 class="card-title">Sales Report Template</h5>
+                    <p class="card-text">
+                        Download the template for generating sales reports.
+                    </p>
+                    <a href="path_to_sales_report_template.xlsx"
+                       download
+                       class="btn btn-primary">Download</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="btn-container text-center">
+        <a asp-controller="InventoryUpdateOverview" asp-action="index">
+            <button class="bg-secondary text-light p-2" style="border: none">
+                Back
+            </button>
+        </a>
+    </div>
+</div>
