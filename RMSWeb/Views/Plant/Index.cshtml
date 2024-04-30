@@ -1,28 +1,44 @@
-﻿@model IEnumerable<Plant>
+﻿@model IEnumerable<RMS.Models.Plant>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
 <div class="col-12">
     <div class="card good-Receipt overflow-auto">
         <div class="card-body">
             <h5 class="card-title">Plant Master Overview</h5>
-
             <div class="table-responsive">
-                <table class="table table-bordered table-striped table-hover">
+
+
+                <table class="table table-bordered table-striped">
                     <thead>
                         <tr>
-                            <th scope="col">Customer Name</th>
-                            <th scope="col">Customer Description</th>
-                            <th scope="col">Action</th>
+
+                            <th>
+                                @Html.DisplayNameFor(model => model.CustomerName)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.CustomerDescription)
+                            </th>
+                            <th> Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach (var plant in Model)
+                        @foreach (var item in Model)
                         {
                             <tr>
-                                <td>@plant.CustomerName</td>
-                                <td>@plant.CustomerDescription</td>
+
                                 <td>
-                                    <button style="border: none">
-                                        <a href="#">Details</a>
-                                    </button>
+                                    @Html.DisplayFor(modelItem => item.CustomerName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CustomerDescription)
+                                </td>
+                                <td>
+
+                                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ })
+
                                 </td>
                             </tr>
                         }

@@ -1,0 +1,68 @@
+﻿@model IEnumerable<RMS.Models.MaterialMasterOverview>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<div class="col-12">
+    <div class="card good-Receipt overflow-auto">
+        <div class="card-body">
+            <h5 class="card-title">Material Master Overview </h5>
+
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead> 
+                        <tr>
+
+                            <th>
+                                @Html.DisplayNameFor(model => model.MaterialNumber)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.MaterialDescription)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.MaterialGroup)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.UnitOfMeasurement)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.MaterialType)
+                            </th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.MaterialNumber)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.MaterialDescription)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.MaterialGroup)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.UnitOfMeasurement)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.MaterialType)
+                                </td>
+                                <td>
+
+                                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ })
+
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using RMS.DataAccess.Data;
 using RMS.DataAccess.Repository.IRepository;
 using RMS.Models;
 
@@ -7,35 +8,36 @@ namespace RMSWeb.Controllers
     [Route("/Plant/[action]")]
     public class PlantController : Controller
     {
-        private readonly IPlantRepository _plantRepository;
+        private readonly ApplicationDbContext applicationDb;
 
-        public PlantController(IPlantRepository plantRepository)
+        public PlantController(ApplicationDbContext applicationDb)
         {
-            _plantRepository = plantRepository;
+            this.applicationDb = applicationDb;
         }
 
         public IActionResult Index()
         {
-            return View(_plantRepository.GetAllPlants());
+            var plantData= applicationDb.Plants.ToList();
+            return View(plantData);
         }
 
 
-        public IActionResult Details(string id)
-        {
-            Plant plant = GetPlantById(id);
+        //public IActionResult Details(string id)
+        //{
+        //    Plant plant = GetPlantById(id);
 
-            if (plant == null)
-            {
-                return NotFound();
-            }
+        //    if (plant == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            return View(plant);
-        }
+        //    return View(plant);
+        //}
 
-        private Plant GetPlantById(string id)
-        {
-            // Dummy implementation - Replace with actual data retrieval logic
-            return new Plant { CustomerName = id, CustomerDescription = "Description for Plant " + id };
-        }
+        //private Plant GetPlantById(string id)
+        //{
+        //    // Dummy implementation - Replace with actual data retrieval logic
+        //    return new Plant { CustomerName = id, CustomerDescription = "Description for Plant " + id };
+        //}
     }
 }

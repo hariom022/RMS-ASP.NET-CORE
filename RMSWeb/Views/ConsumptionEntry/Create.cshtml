@@ -1,17 +1,22 @@
-﻿@model IEnumerable<Plant>
+﻿@model RMS.Models.ConsumptionEntryViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
 <div class="col-12">
     <div class="card good-Receipt overflow-auto">
         <div class="card-body">
             <h5 class="card-title">Consumption Entry Form</h5>
 
             <!-- ---------------------------------------- -->
-            <form>
+            <form asp-controller="ConsumptionEntry" asp-action="Create" method="post">
                 <div class="row mb-3">
                     <div class="col-md-6">
                         <label for="plant" class="form-label">Plant</label>
-                        <select class="form-select" id="plant" required>
+                        <select class="form-select" id="plant" required >
                             <option selected disabled>Select Plant</option>
-                            @foreach (var plant in Model)
+                            @foreach (var plant in Model.Plants)
                             {
                                 <option value="@plant.CustomerId">@plant.CustomerName</option>
                             }
@@ -19,18 +24,19 @@
                     </div>
                     <div class="col-md-6">
                         <label for="material" class="form-label">Material</label>
-                        <select class="form-select" id="material" required>
+                        <select class="form-select" id="material" required >
                             <option selected disabled>Select Material</option>
-                            <option value="material1">Material 1</option>
-                            <option value="material2">Material 2</option>
-                            <option value="material3">Material 3</option>
+                            @foreach (var material in Model.MaterialMasterOverviews)
+                            {
+                                <option value="@material.MaterialId">@material.MaterialType</option>
+                            }
                         </select>
                     </div>
                 </div>
                 <div class="row mb-3">
                     <div class="col-md-6">
                         <label for="materialDescription" class="form-label">Material Description</label>
-                        <select class="form-select" id="materialDescription" required>
+                        <select class="form-select" id="materialDescription" required >
                             <option selected disabled>Select Material Description</option>
                             <option value="materialDescription1">Material Description 1</option>
                             <option value="materialDescription2">Material Description 2</option>
@@ -39,7 +45,7 @@
                     </div>
                     <div class="col-md-6">
                         <label for="uom" class="form-label">UOM</label>
-                        <select class="form-select" id="uom" required>
+                        <select class="form-select" id="uom" required >
                             <option selected disabled>Select UOM</option>
                             <option value="pieces">Pieces</option>
                             <option value="units">Units</option>
@@ -50,7 +56,7 @@
                 </div>
                 <div class="row mb-3">
                     <div class="col-md-6">
-                        <label for="productType" class="form-label">Product Type</label>
+                        <label for="materialType" class="form-label">Material Type</label>
                         <select class="form-select" id="productType">
                             <option selected disabled>Select Product Type</option>
                             <option value="pieces">Product Type 1</option>
@@ -97,8 +103,11 @@
                                required />
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary" asp-action="create">Submit</button>
+                <button type="submit" value="Create" class="btn btn-primary" asp-action="Create">Submit</button>
             </form>
         </div>
     </div>
 </div>
+
+
+

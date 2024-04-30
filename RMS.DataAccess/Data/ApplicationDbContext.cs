@@ -21,5 +21,10 @@ namespace RMS.DataAccess.Data
         public DbSet<QuotationApproval> QuotationApprovals { get; set; }
 
         public DbSet<Role_Authentication> Role_Authentications { get; set; }
+        public DbSet<Plant> Plants { get; set; }    
+
+        public DbSet<MaterialMasterOverview> MaterialMasterOverviews { get; set; }
+        public DbSet<ConsumptionEntry> ConsumptionEntries { get; set; }
+        public DbSet<Inquiry> NewInquiry { get; set; }
     }
 }

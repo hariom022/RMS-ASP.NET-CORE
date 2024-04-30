@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RMS.DataAccess.Data;
 
@@ -11,9 +12,11 @@ using RMS.DataAccess.Data;
 namespace RMS.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240429125056_addConsumptionEntryForm")]
+    partial class addConsumptionEntryForm
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -67,6 +70,12 @@ namespace RMS.DataAccess.Migrations
                     b.Property<string>("MaterialDocument")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("MaterialId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PlantCustomerId")
+                        .HasColumnType("int");
+
                     b.Property<string>("ProductType")
                         .HasColumnType("nvarchar(max)");
 
@@ -80,6 +89,10 @@ namespace RMS.DataAccess.Migrations
                         .HasColumnType("decimal(18,2)");
 
                     b.HasKey("ConsumptionEntryId");
+
+                    b.HasIndex("MaterialId");
+
+                    b.HasIndex("PlantCustomerId");
 
                     b.ToTable("ConsumptionEntries");
                 });
@@ -114,58 +127,6 @@ namespace RMS.DataAccess.Migrations
                     b.HasKey("RequestNo");
 
                     b.ToTable("GoodsReceiptOverview");
-                });
-
-            modelBuilder.Entity("RMS.Models.Inquiry", b =>
-                {
-                    b.Property<int>("No")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("No"));
-
-                    b.Property<string>("Branch")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<decimal>("Budget")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<string>("Customer")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateOnly>("ExpectedDelivery")
-                        .HasColumnType("date");
-
-                    b.Property<string>("ProductCode")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ProductDescription")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Quantity")
-                        .HasColumnType("int");
-
-                    b.Property<DateOnly>("RefDate")
-                        .HasColumnType("date");
-
-                    b.Property<string>("RefNo")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("RequestNo")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UOM")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("No");
-
-                    b.ToTable("NewInquiry");
                 });
 
             modelBuilder.Entity("RMS.Models.InventoryStatusReport", b =>
@@ -483,6 +444,25 @@ namespace RMS.DataAccess.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("SalesOrderDetailsReports");
+                });
+
+            modelBuilder.Entity("RMS.Models.ConsumptionEntry", b =>
+                {
+                    b.HasOne("RMS.Models.MaterialMasterOverview", "Material")
+                        .WithMany()
+                        .HasForeignKey("MaterialId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("RMS.Models.Plant", "Plant")
+                        .WithMany()
+                        .HasForeignKey("PlantCustomerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Material");
+
+                    b.Navigation("Plant");
                 });
 #pragma warning restore 612, 618
         }

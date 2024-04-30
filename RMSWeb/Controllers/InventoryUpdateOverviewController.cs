@@ -14,10 +14,10 @@ namespace RMSWeb.Controllers
         }
         public IActionResult Index()
         {
-           
- 
 
-           var inventoryUpdateData= applicationDb.InventoryUpdateOverviews.ToList();
+
+
+            var inventoryUpdateData = applicationDb.InventoryUpdateOverviews.ToList();
             return View(inventoryUpdateData);
         }
         public IActionResult TemplateDownload()

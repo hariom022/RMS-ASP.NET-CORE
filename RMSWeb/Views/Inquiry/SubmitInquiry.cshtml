@@ -1,148 +1,139 @@
-﻿<div class="col-12">
-        <div class="card good-Receipt overflow-auto">
-          <div class="card-body">
+﻿@model RMS.Models.Inquiry
+
+<div class="col-12">
+    <div class="card good-Receipt overflow-auto">
+        <div class="card-body">
             <h5 class="card-title">New Inquiry Form</h5>
 
             @* <div class="d-flex justify-content-end">
-              <button
-                class="bg-primary p-3"
-                style="border: none; border-radius: 5px"
-              >
-                <a href="addNewMaterial.html" class="text-light"
-                  >Add New Material</a
-                >
-              </button>
+            <button
+            class="bg-primary p-3"
+            style="border: none; border-radius: 5px"
+            >
+            <a href="addNewMaterial.html" class="text-light"
+            >Add New Material</a
+            >
+            </button>
             </div> *@
-            <form>
-              <div class="row mb-3">
-                <div class="col-md-6">
-                  <label for="requestNo" class="form-label">Request No</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="requestNo"
-                    placeholder="Enter Request No"
-                    required
-                  />
+            <form asp-controller="Inquiry" asp-action="SubmitInquiry" method="post">
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="requestNo" class="form-label">Request No</label>
+                        <input type="text"
+                               class="form-control"
+                               id="requestNo"
+                               placeholder="Enter Request No"
+                               required
+                               asp-for="RequestNo" />
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="hfCust" class="form-label">HF Cust</label>
+                        <input type="text"
+                               class="form-control"
+                               id="hfCust"
+                               placeholder="Enter HF Cust"
+                               required
+                               asp-for="Customer" 
+                        />
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="refNo" class="form-label">Ref. No</label>
+                        <input type="text"
+                               class="form-control"
+                               id="refNo"
+                               placeholder="Enter Ref No"
+                               required
+                               asp-for="RefNo" />
+                        
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="refDate" class="form-label">Ref Date</label>
+                        <input type="date"
+                               class="form-control"
+                               id="refDate"
+                               required
+                               asp-for="RefDate" 
+                        />
+                    </div>
                 </div>
 
-                <div class="col-md-6">
-                  <label for="hfCust" class="form-label">HF Cust</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="hfCust"
-                    placeholder="Enter HF Cust"
-                    required
-                  />
-                </div>
-              </div>
-              <div class="row mb-3">
-                <div class="col-md-6">
-                  <label for="refNo" class="form-label">Ref. No</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="refNo"
-                    placeholder="Enter Ref No"
-                    required
-                  />
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="material-code" class="col-form-label">Material Code</label>
+                        <select class="form-select" id="material-code" asp-for="ProductCode" />>
+                        <option selected>Select Material code</option>
+                        <option value="123">Material Code 123</option>
+                        <option value="456">Material Code 456</option>
+                        <option value="789">Material Code 789</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="material-desc" class="col-form-label">Material Description</label>
+                        <select class="form-select" id="material-desc" asp-for="ProductDescription">
+                            <option selected>Select Material Description</option>
+                            <option value="123">Material Description 1</option>
+                            <option value="456">Material Description 2</option>
+                            <option value="789">Material Description 3</option>
+                        </select>
+                    </div>
                 </div>
 
-                <div class="col-md-6">
-                  <label for="refDate" class="form-label">Ref Date</label>
-                  <input
-                    type="date"
-                    class="form-control"
-                    id="refDate"
-                    required
-                  />
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="quantity" class="form-label">Quantity </label>
+                        <input type="number"
+                               class="form-control"
+                               id="quantity"
+                               placeholder="Enter Quantity"
+                               required
+                               asp-for="Quantity" />
+                    </div>
+                    <div class="col-md-6">
+                        <label for="uom" class="form-label">UOM</label>
+                        <select class="form-select" id="uom" required asp-for="UOM">
+                            <option selected disabled>Select UOM</option>
+                            <option value="pieces">Pieces</option>
+                            <option value="units">Units</option>
+                            <option value="kilograms">Kilograms</option>
+                            <option value="liters">Liters</option>
+                        </select>
+                    </div>
                 </div>
-              </div>
-
-              <div class="row mb-3">
-                <div class="col-md-6">
-                  <label for="material-code" class="col-form-label"
-                    >Material Code</label
-                  >
-                  <select class="form-select" id="material-code">
-                    <option selected>Select Material code</option>
-                    <option value="123">Material Code 123</option>
-                    <option value="456">Material Code 456</option>
-                    <option value="789">Material Code 789</option>
-                  </select>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="budget" class="form-label">Budget</label>
+                        <input type="budget"
+                               class="form-control"
+                               id="budget"
+                               placeholder="Enter budget "
+                               asp-for="Budget" />
+                    </div>
+                    <div class="col-md-6">
+                        <label for="branch" class="form-label">Branch</label>
+                        <input type="branch"
+                               class="form-control"
+                               id="branch"
+                               placeholder="Enter branch name"
+                               asp-for="Branch" />
+                    </div>
                 </div>
-
-                <div class="col-md-6">
-                  <label for="material-desc" class="col-form-label"
-                    >Material Description</label
-                  >
-                  <select class="form-select" id="material-desc">
-                    <option selected>Select Material Description</option>
-                    <option value="123">Material Description 1</option>
-                    <option value="456">Material Description 2</option>
-                    <option value="789">Material Description 3</option>
-                  </select>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="expectedDelivery" class="form-label">Expected Delivery</label>
+                        <input type="date"
+                               class="form-control"
+                               id="expectedDelivery"
+                               required
+                               asp-for="ExpectedDelivery" />
+                    </div>
                 </div>
-              </div>
-
-              <div class="row mb-3">
-                <div class="col-md-6">
-                  <label for="quantity" class="form-label">Quantity </label>
-                  <input
-                    type="number"
-                    class="form-control"
-                    id="quantity"
-                    placeholder="Enter Quantity"
-                    required
-                  />
-                </div>
-                <div class="col-md-6">
-                  <label for="uom" class="form-label">UOM</label>
-                  <select class="form-select" id="uom" required>
-                    <option selected disabled>Select UOM</option>
-                    <option value="pieces">Pieces</option>
-                    <option value="units">Units</option>
-                    <option value="kilograms">Kilograms</option>
-                    <option value="liters">Liters</option>
-                  </select>
-                </div>
-              </div>
-              <div class="row mb-3">
-                <div class="col-md-6">
-                  <label for="budget" class="form-label">Budget</label>
-                  <input
-                    type="budget"
-                    class="form-control"
-                    id="budget"
-                    placeholder="Enter budget "
-                  />
-                </div>
-                <div class="col-md-6">
-                  <label for="branch" class="form-label">Branch</label>
-                  <input
-                    type="branch"
-                    class="form-control"
-                    id="branch"
-                    placeholder="Enter branch name"
-                  />
-                </div>
-              </div>
-              <div class="row mb-3">
-                <div class="col-md-6">
-                  <label for="expectedDelivery" class="form-label"
-                    >Expected Delivery</label
-                  >
-                  <input
-                    type="date"
-                    class="form-control"
-                    id="expectedDelivery"
-                    required
-                  />
-                </div>
-              </div>
-              <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
             </form>
-          </div>
         </div>
-      </div>
+    </div>
+</div>

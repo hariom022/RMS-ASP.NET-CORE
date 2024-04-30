@@ -14,8 +14,8 @@ var provider = builder.Services.BuildServiceProvider();
 var config= provider.GetRequiredService<IConfiguration>();
 builder.Services.AddDbContext<ApplicationDbContext>(item => item.UseSqlServer(config.GetConnectionString("dbcs")));
 
-builder.Services.AddScoped<IProductRepository, ProductRepository>();
-builder.Services.AddScoped<IPlantRepository, PlantRepository>();
+//builder.Services.AddScoped<IProductRepository, ProductRepository>();
+//builder.Services.AddScoped<IPlantRepository, PlantRepository>();
 
 /*
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
