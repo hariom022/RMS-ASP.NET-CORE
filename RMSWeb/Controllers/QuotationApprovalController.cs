@@ -19,5 +19,7 @@ namespace RMSWeb.Controllers
             var quotationApprovalData= applicationDb.QuotationApprovals.ToList();
             return View(quotationApprovalData);
         }
+     
+
     }
 }

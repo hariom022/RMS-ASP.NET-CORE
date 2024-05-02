@@ -16,5 +16,11 @@ namespace RMSWeb.Controllers
             var materialData = applicationDb.MaterialMasterOverviews.ToList();
             return View(materialData);
         }
+        public IActionResult Details(int id)
+        {
+            var materialDetail = applicationDb.MaterialMasterOverviews.FirstOrDefault(x=>x.MaterialId==id);
+            return View(materialDetail);
+        }
+
     }
 }

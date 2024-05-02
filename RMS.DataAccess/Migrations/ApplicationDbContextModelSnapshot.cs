@@ -248,39 +248,7 @@ namespace RMS.DataAccess.Migrations
                     b.ToTable("MaterialMasterOverviews");
                 });
 
-            modelBuilder.Entity("RMS.Models.OpenGoodsReceipts", b =>
-                {
-                    b.Property<int>("ReceiptId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ReceiptId"));
-
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("MaterialName")
-                        .IsRequired()
-                        .HasColumnType("varchar(40)")
-                        .HasColumnName("Material Name");
-
-                    b.Property<int>("Quantity")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Supplier")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<double>("TotalPrice")
-                        .HasColumnType("float");
-
-                    b.Property<double>("UnitPrice")
-                        .HasColumnType("float");
-
-                    b.HasKey("ReceiptId");
-
-                    b.ToTable("OpenGoodsReceipts");
-                });
+         
 
             modelBuilder.Entity("RMS.Models.OpenInvoiceConfirmation", b =>
                 {

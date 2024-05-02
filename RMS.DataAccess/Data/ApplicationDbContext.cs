@@ -12,7 +12,6 @@ namespace RMS.DataAccess.Data
         public DbSet<InventoryUpdateOverview> InventoryUpdateOverviews { get; set; }
         public DbSet<GoodsReceiptOverview> GoodsReceiptOverview { get;set;}
         public DbSet<OpenRequestReport> OpenRequestReports { get; set;}
-        public DbSet<OpenGoodsReceipts> OpenGoodsReceipts { get; set;}
         public DbSet<OpenInvoiceConfirmation> OpenInvoiceConfirmations { get; set;}
         public DbSet<LastConsumptionReport> LastConsumptionReports { get; set;}
         public DbSet<InventoryStatusReport> InventoryStatusReports { get; set;}

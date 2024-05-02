@@ -1,78 +1,94 @@
-﻿@model RMS.Models.QuotationDetails
-
+﻿@model RMS.Models.QuotationApproval
 @{
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<div class="col-12 mt-5">
+    <div class="d-flex justify-content-between">
+        <p class="bg-secondary p-3 text-light">Request No:  @Html.DisplayFor(model => model.RequestNo)</p>
+        <p class="bg-secondary p-3 text-light">Quotation ID:@Html.DisplayFor(model => model.Quotation)</p>
+        <p class="bg-secondary p-3 text-light">Date : 05/06/2024</p>
+    </div>
+    <div class="card good-Receipt overflow-auto">
+        <div class="card-body">
+            <h5 class="card-title">Quotation Details</h5>
+            <div style="width: 100%; overflow-x: auto">
+                <table class="table">
+                    <thead>
+                        <tr class="text-center">
+                            <th scope="col ">Material Code</th>
+                            <th scope="col ">Material Type</th>
+                            <th scope="col ">UOM</th>
+                            <th scope="col ">Quantity</th>
+                            <th scope="col ">Rate</th>
+                            <th scope="col ">Total</th>
+                        </tr>
+                    </thead>
 
-<div>
-    <h4>QuotationDetails</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.SN)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.SN)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.RequestNo)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.RequestNo)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.QuotationId)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.QuotationId)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Date)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Date)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.MaterialCode)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.MaterialCode)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.MaterialType)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.MaterialType)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Uom)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Uom)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Quantity)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Quantity)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Rate)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Rate)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Total)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Total)
-        </dd>
-    </dl>
-</div>
-<div>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    <a asp-action="Index">Back to List</a>
+                    <tbody>
+                        <tr class="text-center">
+                            <th scope="row" class="fw-normal">ABC123</th>
+                            <td>Product A</td>
+                            <td>EA</td>
+                            <td>50.00</td>
+                            <td>$14</td>
+                            <td>$700</td>
+                        </tr>
+                        <tr class="text-center">
+                            <th scope="row" class="fw-normal">ABC123</th>
+                            <td>Product B</td>
+                            <td>EA</td>
+                            <td>50.00</td>
+                            <td>$14</td>
+                            <td>$700</td>
+                        </tr>
+                        <tr class="text-center">
+                            <th scope="row" class="fw-normal">ABC123</th>
+                            <td>Product C</td>
+                            <td>EA</td>
+                            <td>15.00</td>
+                            <td>$20</td>
+                            <td>$300</td>
+                        </tr>
+                        <tr class="text-center">
+                            <th scope="row" class="fw-normal">ABC123</th>
+                            <td>Product D</td>
+                            <td>EA</td>
+                            <td>20.00</td>
+                            <td>$25</td>
+                            <td>$500</td>
+                        </tr>
+                        <tr class="text-center">
+                            <th scope="row" class="fw-normal">ABC123</th>
+                            <td>Product E</td>
+                            <td>EA</td>
+                            <td>10.00</td>
+                            <td>$10</td>
+                            <td>$100</td>
+                        </tr>
+                        <tr class="text-center">
+                            <th scope="row" class="fw-normal">JKL123</th>
+                            <td>Product F</td>
+                            <td>EA</td>
+                            <td>20.00</td>
+                            <td>$25</td>
+                            <td>$500</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <hr />
+        <div class="text-end p-5">
+            <p class="fw-bold">Total Quotation Amount : $2800</p>
+        </div>
+    </div>
+    <div class="btn-container text-center">
+        <a  ">
+            <button class="accept-btn bg-success text-light" style="border:none; border-radius:5px">Accept</button>
+        </a>
+        <a  >
+            <button class="reject-btn bg-danger text-light" style="border:none ; border-radius:5px">Reject</button>
+        </a>
+    </div>
 </div>

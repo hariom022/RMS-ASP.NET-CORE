@@ -1,4 +1,4 @@
-﻿@model List<OpenGoodsReceipts>
+﻿@model List<GoodsReceiptOverview>
 @*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
@@ -24,27 +24,25 @@
             <div style="width: 100%; overflow-x: auto">
                 <table class="table table-hover" style="overflow-x: auto">
                     <thead>
-                        <tr>
-                            <th scope="col">Receipt ID</th>
-                            <th scope="col">Supplier</th>
-                            <th scope="col">Date Received</th>
-                            <th scope="col">Material Name</th>
-                            <th scope="col">Quantity</th>
-                            <th scope="col">Unit Price</th>
-                            <th scope="col">Total Price</th>
+                        <tr class="text-center">
+                            <th scope="col">Request No</th>
+                            <th scope="col">Quotation No</th>
+                            <th scope="col">Sales No</th>
+                            <th scope="col">OBD No</th>
+                            <th scope="col">GoodReceipt</th>
+                            
                         </tr>
                     </thead>
                     <tbody>
                         @foreach(var item in Model)
                         {
-                            <tr>
-                                <td>@item.ReceiptId</td>
-                                <td>@item.Supplier</td>
-                                <td>@item.Date.ToString("dd-MM-yyyy")</td>
-                                <td>@item.MaterialName</td>
-                                <td>@item.Quantity</td>
-                                <td>$@item.UnitPrice</td>
-                                <td>$@item.TotalPrice</td>
+                            <tr class="text-center">
+                                <td>@item.RequestNo</td>
+                                <td>@item.QuotationNo</td>
+                                <td>@item.SalesNo</td>
+                                <td>@item.OBDNo</td>
+                                <td>@item.GoodReceipt</td>
+                              
                             </tr>
                         }
                     </tbody>
