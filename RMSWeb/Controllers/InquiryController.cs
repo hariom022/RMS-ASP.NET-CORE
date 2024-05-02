@@ -15,28 +15,25 @@ namespace RMSWeb.Controllers
         }
         public IActionResult SubmitInquiry()
         {
+
+            ViewBag.Materials = applicationDb.MaterialMasterOverviews.ToList();
             return View();
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult SubmitInquiry(Inquiry inquiry)
         {
             if (ModelState.IsValid)
             {
 
-                inquiry.RequestNo = GenerateRequestNumber();
-
-                applicationDb.NewInquiry.Add(inquiry);
+                applicationDb.Inquiries.Add(inquiry);
                 applicationDb.SaveChanges();
 
-                return RedirectToAction("SubmitInquiry"); // Redirect to a different action after successful submission
+                return RedirectToAction(nameof(SubmitInquiry));
             }
             return View(inquiry);
             
         }
-        private int GenerateRequestNumber()
-        {
-            // Your implementation to generate a unique request number
-            return new Random().Next(10000, 99999);
-        }
+
     }
 }

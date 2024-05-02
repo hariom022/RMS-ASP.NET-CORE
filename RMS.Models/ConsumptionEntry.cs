@@ -7,7 +7,8 @@ namespace RMS.Models
     {
         [Key]
         public int ConsumptionEntryId { get; set; }
-
+        public required InventoryUpdateOverview Inventory { get; set; }
+        public required MaterialMasterOverview MaterialMaster { get; set; } 
         public string? MaterialDescription { get; set; }
         public string? UOM { get; set; }
         public string? ProductType { get; set; }
@@ -16,10 +17,5 @@ namespace RMS.Models
         public string? MaterialDocument { get; set; }
         public decimal UnrestrictedStock { get; set; }
     }
-    public class ConsumptionEntryViewModel
-    {
-        public ConsumptionEntry ConsumptionEntry { get; set; }
-        public List<Plant> Plants { get; set; }
-        public List<MaterialMasterOverview> MaterialMasterOverviews { get; set; }
-    }
+   
 }

@@ -10,10 +10,10 @@ namespace RMS.Models
         public string Customer { get; set; }
         public string RefNo { get; set; }
         public DateOnly RefDate { get; set; }
-        public string ProductCode { get; set; }
-        public string ProductDescription { get; set; }
+        public string MaterialNumber { get; set; }
+        public string MaterialDescription { get; set; }
         public int Quantity { get; set; }
-        public string UOM { get; set; }
+        public string UnitOfMeasurement { get; set; }
         public decimal Budget { get; set; }
         public string Branch { get; set; }
         public DateOnly ExpectedDelivery { get; set; }

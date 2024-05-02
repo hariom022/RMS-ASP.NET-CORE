@@ -12,8 +12,8 @@ using RMS.DataAccess.Data;
 namespace RMS.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240430041147_addNewInquiry")]
-    partial class addNewInquiry
+    [Migration("20240502072342_addInquires")]
+    partial class addInquires
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -51,40 +51,6 @@ namespace RMS.DataAccess.Migrations
                     b.HasKey("RequestId");
 
                     b.ToTable("CompletedRequestsReports");
-                });
-
-            modelBuilder.Entity("RMS.Models.ConsumptionEntry", b =>
-                {
-                    b.Property<int>("ConsumptionEntryId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ConsumptionEntryId"));
-
-                    b.Property<DateTime>("DateOfConsumption")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("MaterialDescription")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("MaterialDocument")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ProductType")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<decimal>("QtyConsumed")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<string>("UOM")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<decimal>("UnrestrictedStock")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.HasKey("ConsumptionEntryId");
-
-                    b.ToTable("ConsumptionEntries");
                 });
 
             modelBuilder.Entity("RMS.Models.GoodsReceiptOverview", b =>
@@ -141,11 +107,11 @@ namespace RMS.DataAccess.Migrations
                     b.Property<DateOnly>("ExpectedDelivery")
                         .HasColumnType("date");
 
-                    b.Property<string>("ProductCode")
+                    b.Property<string>("MaterialDescription")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ProductDescription")
+                    b.Property<string>("MaterialNumber")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -162,13 +128,13 @@ namespace RMS.DataAccess.Migrations
                     b.Property<int>("RequestNo")
                         .HasColumnType("int");
 
-                    b.Property<string>("UOM")
+                    b.Property<string>("UnitOfMeasurement")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("No");
 
-                    b.ToTable("NewInquiry");
+                    b.ToTable("Inquiries");
                 });
 
             modelBuilder.Entity("RMS.Models.InventoryStatusReport", b =>

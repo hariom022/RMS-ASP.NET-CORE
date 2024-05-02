@@ -63,23 +63,27 @@
 
                 <div class="row mb-3">
                     <div class="col-md-6">
-                        <label for="material-code" class="col-form-label">Material Code</label>
-                        <select class="form-select" id="material-code" asp-for="ProductCode" />>
-                        <option selected>Select Material code</option>
-                        <option value="123">Material Code 123</option>
-                        <option value="456">Material Code 456</option>
-                        <option value="789">Material Code 789</option>
+                        <label asp-for="MaterialNumber" class="control-label">Material Number</label>
+                        <select asp-for="MaterialNumber" class="form-control">
+                            <option value="">-- Select Material Number --</option>
+                            @foreach (var material in ViewBag.Materials)
+                            {
+                                <option value="@material.MaterialNumber">@material.MaterialNumber</option>
+                            }
                         </select>
+                        <span asp-validation-for="MaterialNumber" class="text-danger"></span>
                     </div>
 
                     <div class="col-md-6">
-                        <label for="material-desc" class="col-form-label">Material Description</label>
-                        <select class="form-select" id="material-desc" asp-for="ProductDescription">
-                            <option selected>Select Material Description</option>
-                            <option value="123">Material Description 1</option>
-                            <option value="456">Material Description 2</option>
-                            <option value="789">Material Description 3</option>
+                        <label asp-for="MaterialDescription" class="control-label">Material Description</label>
+                        <select asp-for="MaterialDescription" class="form-control">
+                            <option value="">-- Select Material Description --</option>
+                            @foreach (var material in ViewBag.Materials)
+                            {
+                                <option value="@material.MaterialDescription">@material.MaterialDescription</option>
+                            }
                         </select>
+                        <span asp-validation-for="MaterialDescription" class="text-danger"></span>
                     </div>
                 </div>
 
@@ -94,14 +98,15 @@
                                asp-for="Quantity" />
                     </div>
                     <div class="col-md-6">
-                        <label for="uom" class="form-label">UOM</label>
-                        <select class="form-select" id="uom" required asp-for="UOM">
-                            <option selected disabled>Select UOM</option>
-                            <option value="pieces">Pieces</option>
-                            <option value="units">Units</option>
-                            <option value="kilograms">Kilograms</option>
-                            <option value="liters">Liters</option>
+                        <label asp-for="UnitOfMeasurement" class="control-label">UMO</label>
+                        <select asp-for="UnitOfMeasurement" class="form-control">
+                            <option value="">-- Unit Of Measurement --</option>
+                            @foreach (var material in ViewBag.Materials)
+                            {
+                                <option value="@material.UnitOfMeasurement">@material.UnitOfMeasurement</option>
+                            }
                         </select>
+                        <span asp-validation-for="UnitOfMeasurement" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="row mb-3">
