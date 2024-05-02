@@ -5,7 +5,7 @@
 namespace RMS.DataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class addPlantMaster : Migration
+    public partial class addPlantMasterOverview : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -17,7 +17,8 @@ namespace RMS.DataAccess.Migrations
                     CustomerId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     CustomerName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CustomerDescription = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    CustomerDescription = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Plants = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {

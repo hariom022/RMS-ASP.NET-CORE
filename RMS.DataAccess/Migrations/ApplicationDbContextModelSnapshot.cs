@@ -248,8 +248,6 @@ namespace RMS.DataAccess.Migrations
                     b.ToTable("MaterialMasterOverviews");
                 });
 
-         
-
             modelBuilder.Entity("RMS.Models.OpenInvoiceConfirmation", b =>
                 {
                     b.Property<int>("Id")
@@ -321,6 +319,10 @@ namespace RMS.DataAccess.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CustomerName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Plants")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("CustomerId");

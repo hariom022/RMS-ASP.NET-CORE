@@ -12,8 +12,8 @@ using RMS.DataAccess.Data;
 namespace RMS.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240429083749_addPlantMaster")]
-    partial class addPlantMaster
+    [Migration("20240502145015_addPlantMasterOverview")]
+    partial class addPlantMasterOverview
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -83,6 +83,58 @@ namespace RMS.DataAccess.Migrations
                     b.HasKey("RequestNo");
 
                     b.ToTable("GoodsReceiptOverview");
+                });
+
+            modelBuilder.Entity("RMS.Models.Inquiry", b =>
+                {
+                    b.Property<int>("No")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("No"));
+
+                    b.Property<string>("Branch")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Budget")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("Customer")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateOnly>("ExpectedDelivery")
+                        .HasColumnType("date");
+
+                    b.Property<string>("MaterialDescription")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MaterialNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<DateOnly>("RefDate")
+                        .HasColumnType("date");
+
+                    b.Property<string>("RefNo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("RequestNo")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UnitOfMeasurement")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("No");
+
+                    b.ToTable("Inquiries");
                 });
 
             modelBuilder.Entity("RMS.Models.InventoryStatusReport", b =>
@@ -171,38 +223,32 @@ namespace RMS.DataAccess.Migrations
                     b.ToTable("LastConsumptionReports");
                 });
 
-            modelBuilder.Entity("RMS.Models.OpenGoodsReceipts", b =>
+            modelBuilder.Entity("RMS.Models.MaterialMasterOverview", b =>
                 {
-                    b.Property<int>("ReceiptId")
+                    b.Property<int>("MaterialId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ReceiptId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MaterialId"));
 
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("MaterialName")
-                        .IsRequired()
-                        .HasColumnType("varchar(40)")
-                        .HasColumnName("Material Name");
-
-                    b.Property<int>("Quantity")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Supplier")
-                        .IsRequired()
+                    b.Property<string>("MaterialDescription")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("TotalPrice")
-                        .HasColumnType("float");
+                    b.Property<string>("MaterialGroup")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("UnitPrice")
-                        .HasColumnType("float");
+                    b.Property<string>("MaterialNumber")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ReceiptId");
+                    b.Property<string>("MaterialType")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.ToTable("OpenGoodsReceipts");
+                    b.Property<string>("UnitOfMeasurement")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("MaterialId");
+
+                    b.ToTable("MaterialMasterOverviews");
                 });
 
             modelBuilder.Entity("RMS.Models.OpenInvoiceConfirmation", b =>
@@ -276,6 +322,10 @@ namespace RMS.DataAccess.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CustomerName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Plants")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("CustomerId");
