@@ -22,17 +22,11 @@ namespace RMSWeb.Controllers
         }
 
 
-        //public IActionResult Details(string id)
-        //{
-        //    Plant plant = GetPlantById(id);
-
-        //    if (plant == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    return View(plant);
-        //}
+        public IActionResult Details(int id)
+        {
+            var plantDetail= applicationDb.Plants.FirstOrDefault(x=>x.CustomerId==id);
+            return View(plantDetail);
+        }
 
         //private Plant GetPlantById(string id)
         //{

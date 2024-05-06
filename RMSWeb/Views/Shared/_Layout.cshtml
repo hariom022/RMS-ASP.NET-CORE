@@ -280,7 +280,7 @@
 
                         <li>
                             <a class="dropdown-item d-flex align-items-center"
-                               asp-controller="LoginPage" asp-action="index">
+                               asp-controller="UserAccount" asp-action="Login">
                                 <i class="bi bi-box-arrow-right"></i>
 
                                 <span>Sign Out</span>
@@ -365,7 +365,7 @@
                         </a>
                     </li>
                     <li>
-                        <a asp-controller="ConsumptionEntry" asp-action="Create">
+                        <a asp-controller="ConsumptionEntry" asp-action="SubmitConsumption">
                             <i class="bi bi-circle"></i><span>Consumption Entry Form</span>
                         </a>
                     </li>
@@ -405,13 +405,18 @@
                         </a>
                     </li>
                     <li>
-                        <a asp-controller="InvoiceOverview" asp-action="index">
+                        <a asp-controller="Invoice" asp-action="index">
                             <i class="bi bi-circle"></i><span>Invoice Overview</span>
                         </a>
                     </li>
                     <li>
-                        <a asp-controller="InvoiceConfirm" asp-action="index">
+                        <a asp-controller="InvoiceConfirmation" asp-action="index">
                             <i class="bi bi-circle"></i><span>Invoice Confirmation</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-controller="SalesInquiryRequestDTO" asp-action="create">
+                            <i class="bi bi-circle"></i><span>Sales Inquiry Requested</span>
                         </a>
                     </li>
                 </ul>

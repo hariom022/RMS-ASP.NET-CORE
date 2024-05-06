@@ -1,88 +1,120 @@
-﻿@model RMS.Models.GoodReceiptViewModel
+﻿@model IEnumerable<RMS.Models.GoodReceiptConfirmation>
+
 @{
     ViewData["Title"] = "Index";
 }
 
 
-
-<div class="col-12">
+<div class="col-12 ">
     <div class="card good-Receipt overflow-auto">
         <div class="card-body">
             <h5 class="card-title">Good Receipt Confirmation</h5>
 
-            <!-- First Table -->
             <table class="table table-hover table-bordered" style="width: 100%">
-                <!-- Table Headers -->
                 <thead>
                     <tr>
-                        <th scope="col" colspan="2" class="text-center">Material Code</th>
+                        <th scope="col" colspan="2" class="text-center">
+                            Material Code
+                        </th>
                     </tr>
                 </thead>
-                <!-- Table Body -->
                 <tbody>
-                    <!-- Table Rows -->
+                    <div>
                     <tr class="text-center">
-                        <td>Request No: @Model.RequestNo</td>
-                        <td>Quotation No : @Model.QuotationNo</td>
+                        <td>Request No:REQ-001</td>
+                        <td>Quotation No : QUO-001</td>
                     </tr>
                     <tr class="text-center">
-                        <td>Sales No: @Model.SalesNo</td>
-                        <td>OBD No: @Model.OBDNo</td>
+                        <td>Sales No: SN-123456</td>
+                        <td>OBD No: OBD-78901</td>
                     </tr>
                     <tr class="text-center">
-                        <td>Date : @Model.GRDate.ToShortDateString()</td>
-                        <td>SKU Quantity : @Model.TotalSKUQuantity</td>
+                        <td>Date : [GR Date]</td>
+                        <td>SKU Quantity : [ Total SKU Quantity ]</td>
                     </tr>
+        </div>
+        </tbody>
+        </table>
+
+        <div style="width: 100%; overflow-x: auto">
+            <table class="table table-hover table-bordered"
+                   style="margin-bottom: 0px !important">
+                <thead>
+                    <tr>
+                        <th>
+                                @Html.DisplayNameFor(model => model.Id)
+                        </th>
+                        <th>
+                                @Html.DisplayNameFor(model => model.MaterialCode)
+                        </th>
+                        <th>
+                                @Html.DisplayNameFor(model => model.MaterialType)
+                        </th>
+                        <th>
+                                @Html.DisplayNameFor(model => model.Quantity)
+                        </th>
+                        <th>
+                                @Html.DisplayNameFor(model => model.UOM)
+                        </th>
+                        <th>
+                                @Html.DisplayNameFor(model => model.Rate)
+                        </th>
+                        <th>
+                                @Html.DisplayNameFor(model => model.Total)
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                        @foreach (var item in Model)
+                        {
+                        <tr>
+                            <td>
+                                    @Html.DisplayFor(modelItem => item.Id)
+                            </td>
+                            <td>
+                                    @Html.DisplayFor(modelItem => item.MaterialCode)
+                            </td>
+                            <td>
+                                    @Html.DisplayFor(modelItem => item.MaterialType)
+                            </td>
+                            <td>
+                                    @Html.DisplayFor(modelItem => item.Quantity)
+                            </td>
+                            <td>
+                                    @Html.DisplayFor(modelItem => item.UOM)
+                            </td>
+                            <td>
+                                    @Html.DisplayFor(modelItem => item.Rate)
+                            </td>
+                            <td>
+                                    @Html.DisplayFor(modelItem => item.Total)
+                            </td>
+
+
+                        </tr>
+                        }
                 </tbody>
             </table>
-
-            <!-- Second Table -->
-            <div style="width: 100%; overflow-x: auto">
-                <table class="table table-hover table-bordered" style="margin-bottom: 0px !important">
-                    <!-- Table Headers -->
-                    <thead>
-                        <tr>
-                            <th scope="col">Material Code</th>
-                            <th scope="col">Material Type</th>
-                            <th scope="col">Quantity</th>
-                            <th scope="col">UOM</th>
-                            <th scope="col">Rate</th>
-                            <th scope="col">Total</th>
-                        </tr>
-                    </thead>
-                    <!-- Table Body -->
-                    <tbody>
-                        <!-- Table Rows -->
-                        @foreach (var item in Model.goodReceiptConfirmation)
-                        {
-                            <tr>
-                                <th scope="row">@item.MaterialCode</th>
-                                <td>@item.MaterialType</td>
-                                <td>@item.Quantity</td>
-                                <td>@item.UOM</td>
-                                <td>$@item.Rate</td>
-                                <td>$@item.Total</td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
-                <!-- Total Receipt -->
-                <div class="total-receipt text-end mt-5 fw-bold">
-                    <p>Total Received Quantity : @Model.TotalReceivedQuantity</p>
-                    <p>Total Receipt Amount $@Model.TotalReceiptAmount.ToString("0.00")</p>
-                </div>
+            <div class="total-receipt text-end mt-5 fw-bold">
+                <p>Total Received Quantity : @ViewBag.Quantity</p>
+                <p>Total Receipt Amount : @ViewBag.Total</p>
             </div>
         </div>
     </div>
-    <!-- Buttons -->
-    <div class="btn-container text-center">
-        <a href="#">
-            <button class="accept-btn bg-success text-light " style="border:none; border-radius:3px">Accept</button>
-        </a>
-        <a href="#">
-            <button class="reject-btn bg-danger text-light" style="border:none;border-radius:3px">Reject</button>
-        </a>
-    </div>
 </div>
-
-
+<div class="btn-container text-center">
+    <a href="#" class="text-light" >
+        <button class="accept-btn bg-success text-light " style="border:none ; border-radius:5px;">
+                Accept
+        </button>
+            
+    </a>
+    <a href="#">
+        <button class="reject-btn bg-danger text-light" style="border:none ; border-radius:5px">
+                Reject
+        </button>
+            
+    </a>
+</div>
+      </div>

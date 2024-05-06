@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,6 +9,8 @@ namespace RMS.Models
 {
     public class GoodReceiptConfirmation
     {
+        [Key]
+        public int Id { get; set; }
         public string MaterialCode { get; set; }
         public string MaterialType { get; set; }
         public int Quantity { get; set; }
@@ -16,16 +19,5 @@ namespace RMS.Models
         public decimal Total { get; set; }
     }
 
-    public class GoodReceiptViewModel
-    {
-        public string RequestNo { get; set; }
-        public string QuotationNo { get; set; }
-        public string SalesNo { get; set; }
-        public string OBDNo { get; set; }
-        public DateTime GRDate { get; set; }
-        public int TotalSKUQuantity { get; set; }
-        public int TotalReceivedQuantity { get; set; }
-        public decimal TotalReceiptAmount { get; set; }
-        public List<GoodReceiptConfirmation> goodReceiptConfirmation { get; set; }
-    }
+    
 }

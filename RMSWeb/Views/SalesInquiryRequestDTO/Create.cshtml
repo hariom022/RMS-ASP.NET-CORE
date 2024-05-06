@@ -1,0 +1,89 @@
+﻿@model RMS.Models.SalesInquiryRequestDTO
+
+@{
+    ViewData["Title"] = "Create";
+}
+<div class="col-12">
+    <div class="card good-Receipt overflow-auto">
+        <div class="card-body">
+            <h5 class="card-title">Sales Inquiry Request</h5>
+            <div class="row mt-5">
+                <form asp-action="Create">
+                    <div class="row g-2">
+                        <div class="form-group form-floating mb-3 col-md-4 col-sm-12 g-2">
+
+                            <input asp-for="RequestNo" class="form-control" id="floatingInput" placeholder="EnquiryDocNo">
+                            <label asp-for="RequestNo" class="control-label">EnquiryDocNo</label>
+                            <span asp-validation-for="RequestNo" class="text-danger"></span>
+
+                        </div>
+                        <div class="form-floating mb-3 form-group col-md-4 col-sm-12 ">
+                            <input asp-for="HF_Cust" class="form-control" id="floatingInput" placeholder="Enter Sold To Party">
+                            <label asp-for="HF_Cust" for="floatingInput">Sold To Party</label>
+                            <span asp-validation-for="HF_Cust" class="text-danger"></span>
+                        </div>
+                        <div class="form-floating mb-3 form-group col-md-4 col-sm-12">
+                            <input asp-for="RefernceDate" class="form-control" id="floatingInput" placeholder="Enter RefernceDate">
+                            <label for="floatingInput" asp-for="RefernceDate">CustRefDate</label>
+                            <span asp-validation-for="RefernceDate" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row g-2">
+
+
+                        <div class="form-floating mb-3 form-group col-md-4 col-sm-12">
+                            <input type="text" asp-for="ReferenceNo" class="form-control" id="floatingInput" placeholder="Enter CustRef">
+                            <label for="floatingInput" asp-for="ReferenceNo">CustRef</label>
+                            <span asp-validation-for="ReferenceNo" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-md-4 form-floating col-md-4 col-sm-12">
+
+                            <select asp-for="salesInquiryItemsDTO[0].Number" class="form-select" id="floatingSelectGrid">
+                                <option selected>Select Material Number</option>
+                                <option>M001</option>
+                                <option>M002</option>
+                                <option>M003</option>
+                                <option>M004</option>
+                                <option>M005</option>
+                            </select>
+                            <label for="floatingSelectGrid">Material </label>
+                        </div>
+
+                        <div class="form-floating mb-3 form-group  col-md-4 col-sm-12">
+                            <input type="text" asp-for="salesInquiryItemsDTO[0].InquiryId" class="form-control" id="floatingInput">
+                            <label for="floatingInput">Inquiry Id</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group  row g-2">
+                        <div class="form-floating mb-3 form-group  col-md-4 col-sm-12">
+                            <input type="number" asp-for="salesInquiryItemsDTO[0].OrderQuantity" class="form-control" id="floatingInput" placeholder="Enter quantity">
+                            <label for="OrderQuantity">Order Quantity</label>
+                        </div>
+
+                        <div class="form-floating mb-3 form-group  col-md-4 col-sm-12">
+
+                            <select asp-for="salesInquiryItemsDTO[0].Description" class="form-select" id="floatingSelectGrid" placeholder="Select Material Description">
+                                <option selected>Select Material Description</option>
+                                <option>Material Description 1</option>
+                                <option>Material Description 2</option>
+                                <option>Material Description 3</option>
+                                <option>Material Description 4</option>
+                                <option>Material Description 5</option>
+
+                            </select>
+                            <label for="floatingSelectGrid">Descriptions</label>
+                        </div>
+                    </div>
+
+
+                    <!-- End Fields for SalesInquiryItemsDTO -->
+
+                    <button type="submit" class="btn btn-primary mt-4">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+

@@ -1,0 +1,106 @@
+﻿@model IEnumerable<RMS.Models.InvoiceConfirmation>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<div class="col-12">
+    <div class="card good-Receipt overflow-auto">
+        <div class="card-body">
+            <div>
+                <div class="row">
+                    <div class="col text-center mt-5">
+                        <h1>Invoice Confirmation</h1>
+                        <p>
+                            Thank you for your order. Your invoice details are as
+                            follows:
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <h5>Invoice #123456</h5>
+                        <p>Date: April 6, 2024</p>
+                    </div>
+                    <div class="col text-end">
+                        <h5>Customer Information</h5>
+                        <p>Name: Lifecare Hospital</p>
+                        <p>lifecare@gmail.com</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <h5>Items</h5>
+                        <div style="overflow-x: auto; width: 100%">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.MaterialCode)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Material)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Quantity)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Price)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Total)
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.MaterialCode)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Material)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Quantity)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Price)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Total)
+                                            </td>
+                                           
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col text-end">
+                        <h5>Total : $ @ViewBag.Total</h5>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col text-end">
+                        <button class="btn btn-primary">Download Invoice</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="btn-container text-center">
+        <a href="#">
+            <button class="accept-btn bg-success text-light " style="border:none ; border-radius:5px;">Confirm</button>
+        </a>
+        <a href="#">
+            <button class="reject-btn bg-danger text-light" style="border:none ; border-radius:5px">Reject</button>
+        </a>
+    </div>
+</div>

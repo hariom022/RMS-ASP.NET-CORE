@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RMS.DataAccess.Data;
 
@@ -11,9 +12,11 @@ using RMS.DataAccess.Data;
 namespace RMS.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240506052622_addInvoiceConfirmation")]
+    partial class addInvoiceConfirmation
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -494,65 +497,6 @@ namespace RMS.DataAccess.Migrations
                     b.ToTable("Role_Authentications");
                 });
 
-            modelBuilder.Entity("RMS.Models.SalesInquiryItemsDTO", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("InquiryId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Number")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("OrderQuantity")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("SalesInquiryRequestDTOId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("SalesInquiryRequestDTOId");
-
-                    b.ToTable("SalesInquiryItemsDTO");
-                });
-
-            modelBuilder.Entity("RMS.Models.SalesInquiryRequestDTO", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("HF_Cust")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ReferenceNo")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("RefernceDate")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<Guid>("RequestNo")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("salesInquiryRequestDTOs");
-                });
-
             modelBuilder.Entity("RMS.Models.SalesOrderDetails", b =>
                 {
                     b.Property<int>("Id")
@@ -626,18 +570,6 @@ namespace RMS.DataAccess.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("UserAccounts");
-                });
-
-            modelBuilder.Entity("RMS.Models.SalesInquiryItemsDTO", b =>
-                {
-                    b.HasOne("RMS.Models.SalesInquiryRequestDTO", null)
-                        .WithMany("salesInquiryItemsDTO")
-                        .HasForeignKey("SalesInquiryRequestDTOId");
-                });
-
-            modelBuilder.Entity("RMS.Models.SalesInquiryRequestDTO", b =>
-                {
-                    b.Navigation("salesInquiryItemsDTO");
                 });
 #pragma warning restore 612, 618
         }

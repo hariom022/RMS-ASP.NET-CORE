@@ -19,12 +19,25 @@ namespace RMSWeb.Controllers
 
             return View();
         }
-        public IActionResult Create( )
+        public IActionResult SubmitConsumption()
         {
-           
+           ViewBag.Materials = applicationDb.MaterialMasterOverviews.ToList();
+           ViewBag.Plants = applicationDb.Plants.ToList();
                 return View();
         }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult SubmitConsumption(ConsumptionEntry consumption)
+        {
+           if(ModelState.IsValid)
+            {
+                applicationDb.ConsumptionEntries.Add(consumption);
+                applicationDb.SaveChanges();
+                return RedirectToAction(nameof(SubmitConsumption));
+            }
+            return View(consumption);
+        }
 
-      
+
     }
 }

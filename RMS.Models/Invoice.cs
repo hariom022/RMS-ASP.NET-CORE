@@ -1,23 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace RMS.Models
 {
-    public class InvoiceConfirmation
+    public class Invoice
     {
-        [Key]
         public int Id { get; set; }
-
+        public string   Item { get; set; }
         public string MaterialCode { get; set; }
-        public string Material { get; set; }
-
         public int Quantity { get; set; }
-        public double Price { get; set; }
 
+        public string MaterialDescription { get; set; }
+        public double Rate { get; set; }
         public double Total {  get; set; }
+
     }
 }

@@ -1,0 +1,124 @@
+﻿@model RMS.Models.ConsumptionEntry
+
+@{
+    ViewData["Title"] = "SubmitConsumption";
+}
+
+
+<div class="col-12">
+    <div class="card good-Receipt overflow-auto">
+        <div class="card-body">
+            <h5 class="card-title">Consumption Entry Form</h5>
+
+            <!-- ---------------------------------------- -->
+            <form asp-controller="ConsumptionEntry" asp-action="SubmitConsumption" method="post">
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label asp-for="Plants" class="control-label">Plant</label>
+                        <select asp-for="Plants" class="form-control">
+                            <option value="">-- Plants --</option>
+                            @foreach (var plant in ViewBag.Plants)
+                            {
+                                <option value="@plant.Plants">@plant.Plants</option>
+                            }
+                        </select>
+                        <span asp-validation-for="Plants" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+  
+                        <label asp-for="Material" class="control-label">Material</label>
+                        <select asp-for="Material" class="form-control">
+                            <option value="">-- Material Number --</option>
+                            @foreach (var material in ViewBag.Materials)
+                            {
+                                <option value="material.MaterialId">@material.MaterialNumber</option>
+                            }
+                        </select>
+                        <span asp-validation-for="Material" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label asp-for="MaterialDescription" class="control-label">Material Description</label>
+                        <select asp-for="MaterialDescription" class="form-control">
+                            <option value="">-- Select Material Description --</option>
+                            @foreach (var material in ViewBag.Materials)
+                            {
+                                <option value="@material.MaterialDescription">@material.MaterialDescription</option>
+                            }
+                        </select>
+                        <span asp-validation-for="MaterialDescription" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="UnitOfMeasurement" class="control-label">UMO</label>
+                        <select asp-for="UnitOfMeasurement" class="form-control">
+                            <option value="">-- Unit Of Measurement --</option>
+                            @foreach (var material in ViewBag.Materials)
+                            {
+                                <option value="@material.UnitOfMeasurement">@material.UnitOfMeasurement</option>
+                            }
+                        </select>
+                        <span asp-validation-for="UnitOfMeasurement" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label asp-for="MaterialType" class="control-label">Material Type</label>
+                        <select asp-for="MaterialType" class="form-control">
+                            <option value="">-- Material Type --</option>
+                            @foreach (var materialtype in ViewBag.Materials)
+                            {
+                                <option value="@materialtype.MaterialType">@materialtype.MaterialType</option>
+                            }
+                        </select>
+                        <span asp-validation-for="MaterialType" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="MaterialDescription" class="control-label">Material Description</label>
+                        <select asp-for="MaterialDescription" class="form-control">
+                            <option value="">-- Select Material Description --</option>
+                            @foreach (var material in ViewBag.Materials)
+                            {
+                                <option value="@material.MaterialDescription">@material.MaterialDescription</option>
+                            }
+                        </select>
+                        <span asp-validation-for="MaterialDescription" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label asp-for="DateOfConsumption" class="control-label">Date of Quantity Consumed</label>
+                        <input type="date"
+                               asp-for="DateOfConsumption" class="form-control"
+                               class="form-control"
+                               id="dateOfQuantityConsumed"
+                               required />
+                        <span asp-validation-for="DateOfConsumption" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="QtyConsumed" class="control-label">Quantity Consumed</label>
+                        <input type="number"
+                               asp-for="QtyConsumed" class="form-control"
+                               class="form-control"
+                               id="quantityConsumed"
+                               placeholder="Enter Quantity Consumed"
+                               required />
+                        <span asp-validation-for="QtyConsumed" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label asp-for="UnrestrictedStock" class="control-label">Unrestricted Stock</label>
+                        <input type="number"
+                               asp-for="UnrestrictedStock" class="form-control"
+                               id="unrestrictedStock"
+                               placeholder="Enter Unrestricted Stock"
+                               required />
+                        <span asp-validation-for="UnrestrictedStock" class="text-danger"></span>
+                    </div>
+                </div>
+                <button type="submit"  class="btn btn-primary" >Submit</button>
+            </form>
+        </div>
+    </div>
+</div>

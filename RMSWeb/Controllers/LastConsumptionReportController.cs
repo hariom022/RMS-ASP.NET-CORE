@@ -15,8 +15,8 @@ namespace RMSWeb.Controllers
         public IActionResult Index()
         {
           
-            var lastConsumptionReportData = applicationDb.LastConsumptionReports.ToList();
-            return View(lastConsumptionReportData);
+            //var lastConsumptionReportData = applicationDb.LastConsumptionReports.ToList();
+            return View();
         }
     }
 }

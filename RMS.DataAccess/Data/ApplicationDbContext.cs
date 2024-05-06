@@ -13,7 +13,7 @@ namespace RMS.DataAccess.Data
         public DbSet<GoodsReceiptOverview> GoodsReceiptOverview { get;set;}
         public DbSet<OpenRequestReport> OpenRequestReports { get; set;}
         public DbSet<OpenInvoiceConfirmation> OpenInvoiceConfirmations { get; set;}
-        public DbSet<LastConsumptionReport> LastConsumptionReports { get; set;}
+        //public DbSet<LastConsumptionReport> LastConsumptionReports { get; set;}
         public DbSet<InventoryStatusReport> InventoryStatusReports { get; set;}
         public DbSet<SalesOrderDetails> SalesOrderDetailsReports { get;set;}
         public DbSet<CompletedRequestsReport> CompletedRequestsReports { get; set;}
@@ -25,5 +25,16 @@ namespace RMS.DataAccess.Data
 
         public DbSet<Inquiry> Inquiries { get; set; }
         public DbSet<Plant> Plants { get; set; }
+        public DbSet<ConsumptionEntry> ConsumptionEntries { get; set; }
+
+        public DbSet<UserAccount> UserAccounts { get; set; }
+
+        public DbSet<GoodReceiptConfirmation> GoodsReceiptConfirmations { get; set;}
+
+        public DbSet<Invoice> Invoices { get; set; }
+
+        public DbSet<InvoiceConfirmation> InvoicesConfirmations { get; set; }
+
+        public DbSet<SalesInquiryRequestDTO> salesInquiryRequestDTOs { get; set; }
     }
 }
