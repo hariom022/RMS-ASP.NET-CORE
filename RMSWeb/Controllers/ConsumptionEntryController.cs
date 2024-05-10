@@ -21,7 +21,7 @@ namespace RMSWeb.Controllers
         }
         public IActionResult SubmitConsumption()
         {
-           ViewBag.Materials = applicationDb.MaterialMasterOverviews.ToList();
+           ViewBag.Products = applicationDb.ProductMasterOverviews.ToList();
            ViewBag.Plants = applicationDb.Plants.ToList();
                 return View();
         }

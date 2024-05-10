@@ -5,17 +5,18 @@
 namespace RMS.DataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class AddGoodsReceiptOverview : Migration
+    public partial class addGoodReceiptOverviews : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "GoodsReceiptOverview",
+                name: "GoodsReceiptOverviews",
                 columns: table => new
                 {
-                    RequestNo = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    RequestNo = table.Column<int>(type: "int", nullable: false),
                     QuotationNo = table.Column<string>(name: "Quotation No", type: "varchar(50)", nullable: false),
                     SalesNo = table.Column<string>(name: "Sales No", type: "varchar(20)", nullable: false),
                     OBDNo = table.Column<string>(name: "OBD No", type: "varchar(20)", nullable: false),
@@ -23,7 +24,7 @@ namespace RMS.DataAccess.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_GoodsReceiptOverview", x => x.RequestNo);
+                    table.PrimaryKey("PK_GoodsReceiptOverviews", x => x.Id);
                 });
         }
 
@@ -31,7 +32,7 @@ namespace RMS.DataAccess.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "GoodsReceiptOverview");
+                name: "GoodsReceiptOverviews");
         }
     }
 }

@@ -16,7 +16,7 @@ namespace RMSWeb.Controllers
         public IActionResult SubmitInquiry()
         {
 
-            ViewBag.Materials = applicationDb.MaterialMasterOverviews.ToList();
+            ViewBag.Products = applicationDb.ProductMasterOverviews.ToList();
             return View();
         }
         [HttpPost]

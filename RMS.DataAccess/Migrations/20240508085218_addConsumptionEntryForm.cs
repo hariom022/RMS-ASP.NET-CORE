@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace RMS.DataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class addConsumptionEntry : Migration
+    public partial class addConsumptionEntryForm : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -18,13 +18,13 @@ namespace RMS.DataAccess.Migrations
                     ConsumptionEntryId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Plants = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Material = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    MaterialDescription = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Product = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ProductDescription = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UnitOfMeasurement = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    MaterialType = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ProductType = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     QtyConsumed = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     DateOfConsumption = table.Column<DateOnly>(type: "date", nullable: false),
-                    MaterialDocument = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ProductDocument = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UnrestrictedStock = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
                 },
                 constraints: table =>

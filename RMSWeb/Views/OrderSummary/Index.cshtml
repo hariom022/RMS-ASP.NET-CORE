@@ -1,0 +1,34 @@
+﻿@model IEnumerable<RMS.Models.NewPage>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="col-12 mt-5">
+    <div class="card good-Receipt overflow-auto">
+        <div class="card-body">
+            <h5 class="card-title">Order Summary </h5>
+            <div style="width: 100%; overflow-x: auto">
+                <table class="table">
+                    <thead>
+                        <tr class="text-center">
+                            <th>Product</th>
+                            <th>Quantity</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr class="text-center">
+                                <td>@item.Product</td>
+                                <td>@item.Quantity</td>
+                               
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+</div>

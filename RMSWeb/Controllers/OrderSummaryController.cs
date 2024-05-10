@@ -4,19 +4,18 @@ using RMS.Models;
 
 namespace RMSWeb.Controllers
 {
-    public class GoodsReceiptOverviewController : Controller
+    public class OrderSummaryController : Controller
     {
         private readonly ApplicationDbContext applicationDb;
 
-        public GoodsReceiptOverviewController(ApplicationDbContext applicationDb)
+        public OrderSummaryController(ApplicationDbContext applicationDb)
         {
             this.applicationDb = applicationDb;
         }
         public IActionResult Index()
         {
-           
-            var goodReceiptOverviewData = applicationDb.GoodsReceiptOverviews.ToList();
-            return View(goodReceiptOverviewData); 
+            IEnumerable<NewPage> model = applicationDb.NewPages;
+            return View(model);
         }
     }
 }

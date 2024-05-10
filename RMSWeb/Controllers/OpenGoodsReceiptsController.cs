@@ -16,7 +16,7 @@ namespace RMSWeb.Controllers
         public IActionResult Index()
         {
            
-            var openGoodReceiptsData = applicationDb.GoodsReceiptOverview.ToList();
+            var openGoodReceiptsData = applicationDb.GoodsReceiptOverviews.ToList();
             return View(openGoodReceiptsData);
         }
     }

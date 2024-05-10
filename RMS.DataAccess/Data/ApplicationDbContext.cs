@@ -10,7 +10,6 @@ namespace RMS.DataAccess.Data
 
         }
         public DbSet<InventoryUpdateOverview> InventoryUpdateOverviews { get; set; }
-        public DbSet<GoodsReceiptOverview> GoodsReceiptOverview { get;set;}
         public DbSet<OpenRequestReport> OpenRequestReports { get; set;}
         public DbSet<OpenInvoiceConfirmation> OpenInvoiceConfirmations { get; set;}
         //public DbSet<LastConsumptionReport> LastConsumptionReports { get; set;}
@@ -21,20 +20,24 @@ namespace RMS.DataAccess.Data
 
         public DbSet<Role_Authentication> Role_Authentications { get; set; } 
 
-        public DbSet<MaterialMasterOverview> MaterialMasterOverviews { get; set; }
-
-        public DbSet<Inquiry> Inquiries { get; set; }
         public DbSet<Plant> Plants { get; set; }
-        public DbSet<ConsumptionEntry> ConsumptionEntries { get; set; }
-
         public DbSet<UserAccount> UserAccounts { get; set; }
 
         public DbSet<GoodReceiptConfirmation> GoodsReceiptConfirmations { get; set;}
 
-        public DbSet<Invoice> Invoices { get; set; }
-
-        public DbSet<InvoiceConfirmation> InvoicesConfirmations { get; set; }
-
         public DbSet<SalesInquiryRequestDTO> salesInquiryRequestDTOs { get; set; }
+
+
+        //-----------------------------------------------------------------
+
+        public DbSet<ProductMasterOverview> ProductMasterOverviews { get; set; }
+       public DbSet<ConsumptionEntry> ConsumptionEntries { get; set; }
+        public DbSet<Inquiry> Inquiries { get; set; } 
+        public DbSet<GoodsReceiptOverview> GoodsReceiptOverviews { get; set; }
+        public DbSet<ProofOfDelivery> ProofOfDelivery { get; set;}
+        public DbSet<Invoice> Invoices { get; set; }
+        public DbSet<InvoiceConfirmation> InvoicesConfirmations { get; set; }
+        public DbSet<OutboundDeliveryNo> OutboundDelivery { get; set;}
+       public DbSet<NewPage> NewPages { get; set; }
     }
 }

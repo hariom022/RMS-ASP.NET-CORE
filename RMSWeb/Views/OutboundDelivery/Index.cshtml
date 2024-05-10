@@ -1,28 +1,25 @@
-﻿@model IEnumerable<RMS.Models.Invoice>
+﻿@model IEnumerable<RMS.Models.OutboundDeliveryNo>
 
 @{
     ViewData["Title"] = "Index";
 }
 
 
-<div class="col-12 mt-5">
 
+<div class="col-12 mt-5">
+   
     <div class="card good-Receipt overflow-auto">
         <div class="card-body">
-            <h5 class="card-title">Invoice </h5>
+            <h5 class="card-title">OutBound Delievry No </h5>
             <div style="width: 100%; overflow-x: auto">
                 <table class="table">
                     <thead>
                         <tr>
-                           
                             <th>
-                                @Html.DisplayNameFor(model => model.InvoiceNo)
+                                @Html.DisplayNameFor(model => model.ID)
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.CustomerName)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.CustomerNo)
+                                @Html.DisplayNameFor(model => model.OBDNo)
                             </th>
                             <th>
                                 @Html.DisplayNameFor(model => model.ProductNo)
@@ -31,29 +28,24 @@
                                 @Html.DisplayNameFor(model => model.ProductName)
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.InvoicedQty)
+                                @Html.DisplayNameFor(model => model.PickedQuantity)
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.NetValue)
+                                @Html.DisplayNameFor(model => model.Branch)
                             </th>
                             <th></th>
                         </tr>
                     </thead>
 
                     <tbody>
-                      
                         @foreach (var item in Model)
                         {
                             <tr>
-                               
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.InvoiceNo)
+                                    @Html.DisplayFor(modelItem => item.ID)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.CustomerName)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.CustomerNo)
+                                    @Html.DisplayFor(modelItem => item.OBDNo)
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.ProductNo)
@@ -62,10 +54,10 @@
                                     @Html.DisplayFor(modelItem => item.ProductName)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.InvoicedQty)
+                                    @Html.DisplayFor(modelItem => item.PickedQuantity)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.NetValue)
+                                    @Html.DisplayFor(modelItem => item.Branch)
                                 </td>
                                
                             </tr>
@@ -74,19 +66,14 @@
                 </table>
             </div>
         </div>
-        <hr />
-        <div class="text-end p-5">
-            <p class="fw-bold"> Amount : </p>
-            <p class="fw-bold">Tax : </p>
-            <p class="fw-bold">Total Net Amount : </p>
-        </div>
+      
     </div>
     <div class="btn-container text-center">
         <a href="#">
             <button style="border:none; border-radius:3px" class="accept-btn bg-success text-light">Accept</button>
         </a>
         <a href="#">
-            <button style="border:none; border-radius:3px" class="reject-btn bg-danger text-light">Reject</button>
+            <button style="border:none ; border-radius:3px" class="reject-btn bg-danger text-light">Reject</button>
         </a>
     </div>
 </div>

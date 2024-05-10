@@ -15,7 +15,7 @@ namespace RMSWeb.Controllers
         {
             var invoiceData = applicationDb.Invoices.ToList();
 
-            double totalSum = invoiceData.Sum(x=>x.Total);
+            double totalSum = invoiceData.Sum(x=>x.InvoicedQty);
             ViewBag.Total = totalSum;
 
             double tax = totalSum * 0.1;

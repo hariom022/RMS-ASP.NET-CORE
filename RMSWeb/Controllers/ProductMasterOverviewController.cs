@@ -3,22 +3,22 @@ using RMS.DataAccess.Data;
 
 namespace RMSWeb.Controllers
 {
-    public class MaterialMasterOverviewController : Controller
+    public class ProductMasterOverviewController : Controller
     {
         private readonly ApplicationDbContext applicationDb;
 
-        public MaterialMasterOverviewController(ApplicationDbContext applicationDb)
+        public ProductMasterOverviewController(ApplicationDbContext applicationDb)
         {
             this.applicationDb = applicationDb;
         }
         public IActionResult Index()
         {
-            var materialData = applicationDb.MaterialMasterOverviews.ToList();
+            var materialData = applicationDb.ProductMasterOverviews.ToList();
             return View(materialData);
         }
         public IActionResult Details(int id)
         {
-            var materialDetail = applicationDb.MaterialMasterOverviews.FirstOrDefault(x=>x.MaterialId==id);
+            var materialDetail = applicationDb.ProductMasterOverviews.FirstOrDefault(x=>x.ProductId==id);
             return View(materialDetail);
         }
 

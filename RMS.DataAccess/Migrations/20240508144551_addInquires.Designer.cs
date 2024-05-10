@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RMS.DataAccess.Data;
 
@@ -11,9 +12,11 @@ using RMS.DataAccess.Data;
 namespace RMS.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240508144551_addInquires")]
+    partial class addInquires
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -128,11 +131,11 @@ namespace RMS.DataAccess.Migrations
 
             modelBuilder.Entity("RMS.Models.GoodsReceiptOverview", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("RequestNo")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RequestNo"));
 
                     b.Property<string>("GoodReceipt")
                         .IsRequired()
@@ -148,17 +151,14 @@ namespace RMS.DataAccess.Migrations
                         .HasColumnType("varchar(50)")
                         .HasColumnName("Quotation No");
 
-                    b.Property<int>("RequestNo")
-                        .HasColumnType("int");
-
                     b.Property<string>("SalesNo")
                         .IsRequired()
                         .HasColumnType("varchar(20)")
                         .HasColumnName("Sales No");
 
-                    b.HasKey("Id");
+                    b.HasKey("RequestNo");
 
-                    b.ToTable("GoodsReceiptOverviews");
+                    b.ToTable("GoodsReceiptOverview");
                 });
 
             modelBuilder.Entity("RMS.Models.Inquiry", b =>
@@ -278,31 +278,26 @@ namespace RMS.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("CustomerName")
+                    b.Property<string>("Item")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("CustomerNo")
+                    b.Property<string>("MaterialCode")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("InvoiceNo")
+                    b.Property<string>("MaterialDescription")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("InvoicedQty")
+                    b.Property<int>("Quantity")
                         .HasColumnType("int");
 
-                    b.Property<double>("NetValue")
+                    b.Property<double>("Rate")
                         .HasColumnType("float");
 
-                    b.Property<string>("ProductName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ProductNo")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<double>("Total")
+                        .HasColumnType("float");
 
                     b.HasKey("Id");
 
@@ -317,16 +312,16 @@ namespace RMS.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("Material")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MaterialCode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<double>("Price")
                         .HasColumnType("float");
-
-                    b.Property<string>("Product")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ProductCode")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
@@ -337,26 +332,6 @@ namespace RMS.DataAccess.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("InvoicesConfirmations");
-                });
-
-            modelBuilder.Entity("RMS.Models.NewPage", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Product")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Quantity")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("NewPages");
                 });
 
             modelBuilder.Entity("RMS.Models.OpenInvoiceConfirmation", b =>
@@ -418,41 +393,6 @@ namespace RMS.DataAccess.Migrations
                     b.ToTable("OpenRequestReports");
                 });
 
-            modelBuilder.Entity("RMS.Models.OutboundDeliveryNo", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
-
-                    b.Property<string>("Branch")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateOnly>("DeleveredDate")
-                        .HasColumnType("date");
-
-                    b.Property<string>("OBDNo")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("PickedQuantity")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ProductName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ProductNo")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("OutboundDelivery");
-                });
-
             modelBuilder.Entity("RMS.Models.Plant", b =>
                 {
                     b.Property<int>("CustomerId")
@@ -502,42 +442,6 @@ namespace RMS.DataAccess.Migrations
                     b.HasKey("ProductId");
 
                     b.ToTable("ProductMasterOverviews");
-                });
-
-            modelBuilder.Entity("RMS.Models.ProofOfDelivery", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("GoodReceipt")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("OBDNo")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PODNo")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("QuotationNo")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("RequestNo")
-                        .HasColumnType("int");
-
-                    b.Property<string>("SalesNo")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("ProofOfDelivery");
                 });
 
             modelBuilder.Entity("RMS.Models.QuotationApproval", b =>

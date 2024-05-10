@@ -12,8 +12,8 @@ using RMS.DataAccess.Data;
 namespace RMS.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240506052622_addInvoiceConfirmation")]
-    partial class addInvoiceConfirmation
+    [Migration("20240508075043_addProductMasterOverview")]
+    partial class addProductMasterOverview
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -334,34 +334,6 @@ namespace RMS.DataAccess.Migrations
                     b.ToTable("InvoicesConfirmations");
                 });
 
-            modelBuilder.Entity("RMS.Models.MaterialMasterOverview", b =>
-                {
-                    b.Property<int>("MaterialId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MaterialId"));
-
-                    b.Property<string>("MaterialDescription")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("MaterialGroup")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("MaterialNumber")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("MaterialType")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UnitOfMeasurement")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("MaterialId");
-
-                    b.ToTable("MaterialMasterOverviews");
-                });
-
             modelBuilder.Entity("RMS.Models.OpenInvoiceConfirmation", b =>
                 {
                     b.Property<int>("Id")
@@ -444,6 +416,34 @@ namespace RMS.DataAccess.Migrations
                     b.ToTable("Plants");
                 });
 
+            modelBuilder.Entity("RMS.Models.ProductMasterOverview", b =>
+                {
+                    b.Property<int>("ProductId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductId"));
+
+                    b.Property<string>("ProductDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProductGroup")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProductNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProductType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UnitOfMeasurement")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ProductId");
+
+                    b.ToTable("ProductMasterOverviews");
+                });
+
             modelBuilder.Entity("RMS.Models.QuotationApproval", b =>
                 {
                     b.Property<int>("Id")
@@ -495,6 +495,65 @@ namespace RMS.DataAccess.Migrations
                     b.HasKey("UserNo");
 
                     b.ToTable("Role_Authentications");
+                });
+
+            modelBuilder.Entity("RMS.Models.SalesInquiryItemsDTO", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("InquiryId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Number")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("OrderQuantity")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("SalesInquiryRequestDTOId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SalesInquiryRequestDTOId");
+
+                    b.ToTable("SalesInquiryItemsDTO");
+                });
+
+            modelBuilder.Entity("RMS.Models.SalesInquiryRequestDTO", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("HF_Cust")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ReferenceNo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RefernceDate")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("RequestNo")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("salesInquiryRequestDTOs");
                 });
 
             modelBuilder.Entity("RMS.Models.SalesOrderDetails", b =>
@@ -570,6 +629,18 @@ namespace RMS.DataAccess.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("UserAccounts");
+                });
+
+            modelBuilder.Entity("RMS.Models.SalesInquiryItemsDTO", b =>
+                {
+                    b.HasOne("RMS.Models.SalesInquiryRequestDTO", null)
+                        .WithMany("salesInquiryItemsDTO")
+                        .HasForeignKey("SalesInquiryRequestDTOId");
+                });
+
+            modelBuilder.Entity("RMS.Models.SalesInquiryRequestDTO", b =>
+                {
+                    b.Navigation("salesInquiryItemsDTO");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<RMS.Models.MaterialMasterOverview>
+﻿@model IEnumerable<RMS.Models.ProductMasterOverview>
 
 @{
     ViewData["Title"] = "Index";
@@ -16,19 +16,19 @@
                         <tr>
 
                             <th>
-                                @Html.DisplayNameFor(model => model.MaterialNumber)
+                                @Html.DisplayNameFor(model => model.ProductNumber)
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.MaterialDescription)
+                                @Html.DisplayNameFor(model => model.ProductDescription)
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.MaterialGroup)
+                                @Html.DisplayNameFor(model => model.ProductGroup)
                             </th>
                             <th>
                                 @Html.DisplayNameFor(model => model.UnitOfMeasurement)
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.MaterialType)
+                                @Html.DisplayNameFor(model => model.ProductType)
                             </th>
                             <th>Action</th>
                         </tr>
@@ -39,23 +39,23 @@
                             <tr>
 
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.MaterialNumber)
+                                    @Html.DisplayFor(modelItem => item.ProductNumber)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.MaterialDescription)
+                                    @Html.DisplayFor(modelItem => item.ProductDescription)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.MaterialGroup)
+                                    @Html.DisplayFor(modelItem => item.ProductGroup)
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.UnitOfMeasurement)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.MaterialType)
+                                    @Html.DisplayFor(modelItem => item.ProductType)
                                 </td>
                                 <td>
 
-                                    @Html.ActionLink("Details", "Details", new {  id=item.MaterialId  })
+                                    @Html.ActionLink("Details", "Details", new {  id=item.ProductId  })
 
                                 </td>
                             </tr>

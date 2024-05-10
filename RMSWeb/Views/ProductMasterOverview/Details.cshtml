@@ -1,4 +1,4 @@
-﻿@model RMS.Models.MaterialMasterOverview
+﻿@model RMS.Models.ProductMasterOverview
 
 @{
     ViewData["Title"] = "Details";
@@ -11,47 +11,47 @@
 
 
 <div class="col-12 mt-5">
-    
+
     <div class="card good-Receipt overflow-auto">
         <div class="card-body">
-            <h5 class="card-title">Master Material Details</h5>
+            <h5 class="card-title">Product Material Details</h5>
             <div>
                 <dl class="row">
                     <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => model.MaterialId)
+                        @Html.DisplayNameFor(model => model.ProductId)
                     </dt>
                     <dd class="col-sm-10">
-                      :  @Html.DisplayFor(model => model.MaterialId)
+                        :  @Html.DisplayFor(model => model.ProductId)
                     </dd>
                     <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => model.MaterialNumber)
+                        @Html.DisplayNameFor(model => model.ProductNumber)
                     </dt>
                     <dd class="col-sm-10">
-                       : @Html.DisplayFor(model => model.MaterialNumber)
+                        : @Html.DisplayFor(model => model.ProductNumber)
                     </dd>
                     <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => model.MaterialDescription)
+                        @Html.DisplayNameFor(model => model.ProductDescription)
                     </dt>
                     <dd class="col-sm-10">
-                        :@Html.DisplayFor(model => model.MaterialDescription)
+                        :@Html.DisplayFor(model => model.ProductDescription)
                     </dd>
                     <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => model.MaterialGroup)
+                        @Html.DisplayNameFor(model => model.ProductGroup)
                     </dt>
                     <dd class="col-sm-10">
-                       : @Html.DisplayFor(model => model.MaterialGroup)
+                        : @Html.DisplayFor(model => model.ProductGroup)
                     </dd>
                     <dt class="col-sm-2">
                         @Html.DisplayNameFor(model => model.UnitOfMeasurement)
                     </dt>
                     <dd class="col-sm-10">
-                       : @Html.DisplayFor(model => model.UnitOfMeasurement)
+                        : @Html.DisplayFor(model => model.UnitOfMeasurement)
                     </dd>
                     <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => model.MaterialType)
+                        @Html.DisplayNameFor(model => model.ProductType)
                     </dt>
                     <dd class="col-sm-10">
-                       : @Html.DisplayFor(model => model.MaterialType)
+                        : @Html.DisplayFor(model => model.ProductType)
                     </dd>
                 </dl>
             </div>
@@ -61,7 +61,7 @@
             </div>
         </div>
         <hr />
-       
+
     </div>
-   
+
 </div>

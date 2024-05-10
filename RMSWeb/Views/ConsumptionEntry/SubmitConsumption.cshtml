@@ -25,37 +25,37 @@
                         <span asp-validation-for="Plants" class="text-danger"></span>
                     </div>
                     <div class="col-md-6">
-  
-                        <label asp-for="Material" class="control-label">Material</label>
-                        <select asp-for="Material" class="form-control">
-                            <option value="">-- Material Number --</option>
-                            @foreach (var material in ViewBag.Materials)
+
+                        <label asp-for="Product" class="control-label">Product</label>
+                        <select asp-for="Product" class="form-control">
+                            <option value="">-- Product Number --</option>
+                            @foreach (var product in ViewBag.Products)
                             {
-                                <option value="material.MaterialId">@material.MaterialNumber</option>
+                                <option value="product.ProductId">@product.ProductNumber</option>
                             }
                         </select>
-                        <span asp-validation-for="Material" class="text-danger"></span>
+                        <span asp-validation-for="Product" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="row mb-3">
                     <div class="col-md-6">
-                        <label asp-for="MaterialDescription" class="control-label">Material Description</label>
-                        <select asp-for="MaterialDescription" class="form-control">
-                            <option value="">-- Select Material Description --</option>
-                            @foreach (var material in ViewBag.Materials)
+                        <label asp-for="ProductDescription" class="control-label">Material Description</label>
+                        <select asp-for="ProductDescription" class="form-control">
+                            <option value="">-- Select Product Description --</option>
+                            @foreach (var product in ViewBag.Products)
                             {
-                                <option value="@material.MaterialDescription">@material.MaterialDescription</option>
+                                <option value="@product.ProductId">@product.ProductDescription</option>
                             }
                         </select>
-                        <span asp-validation-for="MaterialDescription" class="text-danger"></span>
+                        <span asp-validation-for="ProductDescription" class="text-danger"></span>
                     </div>
                     <div class="col-md-6">
                         <label asp-for="UnitOfMeasurement" class="control-label">UMO</label>
                         <select asp-for="UnitOfMeasurement" class="form-control">
                             <option value="">-- Unit Of Measurement --</option>
-                            @foreach (var material in ViewBag.Materials)
+                            @foreach (var product in ViewBag.Products)
                             {
-                                <option value="@material.UnitOfMeasurement">@material.UnitOfMeasurement</option>
+                                <option value="@product.UnitOfMeasurement">@product.UnitOfMeasurement</option>
                             }
                         </select>
                         <span asp-validation-for="UnitOfMeasurement" class="text-danger"></span>
@@ -63,26 +63,26 @@
                 </div>
                 <div class="row mb-3">
                     <div class="col-md-6">
-                        <label asp-for="MaterialType" class="control-label">Material Type</label>
-                        <select asp-for="MaterialType" class="form-control">
-                            <option value="">-- Material Type --</option>
-                            @foreach (var materialtype in ViewBag.Materials)
+                        <label asp-for="ProductType" class="control-label">Product Type</label>
+                        <select asp-for="ProductType" class="form-control">
+                            <option value="">-- Product Type --</option>
+                            @foreach (var producttype in ViewBag.Products)
                             {
-                                <option value="@materialtype.MaterialType">@materialtype.MaterialType</option>
+                                <option value="@producttype.ProductType">@producttype.ProductType</option>
                             }
                         </select>
-                        <span asp-validation-for="MaterialType" class="text-danger"></span>
+                        <span asp-validation-for="ProductType" class="text-danger"></span>
                     </div>
                     <div class="col-md-6">
-                        <label asp-for="MaterialDescription" class="control-label">Material Description</label>
-                        <select asp-for="MaterialDescription" class="form-control">
-                            <option value="">-- Select Material Description --</option>
-                            @foreach (var material in ViewBag.Materials)
+                        <label asp-for="ProductDescription" class="control-label">Product Description</label>
+                        <select asp-for="ProductDescription" class="form-control">
+                            <option value="">-- Select Product Description --</option>
+                            @foreach (var product in ViewBag.Products)
                             {
-                                <option value="@material.MaterialDescription">@material.MaterialDescription</option>
+                                <option value="@product.ProductDescription">@product.ProductDescription</option>
                             }
                         </select>
-                        <span asp-validation-for="MaterialDescription" class="text-danger"></span>
+                        <span asp-validation-for="ProductDescription" class="text-danger"></span> 
                     </div>
                 </div>
                 <div class="row mb-3">
@@ -117,7 +117,7 @@
                         <span asp-validation-for="UnrestrictedStock" class="text-danger"></span>
                     </div>
                 </div>
-                <button type="submit"  class="btn btn-primary" >Submit</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>
     </div>

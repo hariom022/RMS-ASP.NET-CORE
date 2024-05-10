@@ -1,85 +1,76 @@
-﻿@model IEnumerable<RMS.Models.Invoice>
+﻿@model IEnumerable<RMS.Models.ProofOfDelivery>
 
 @{
     ViewData["Title"] = "Index";
 }
 
-
 <div class="col-12 mt-5">
-
+    
     <div class="card good-Receipt overflow-auto">
         <div class="card-body">
-            <h5 class="card-title">Invoice </h5>
+            <h5 class="card-title">Proof Of Delivery</h5>
             <div style="width: 100%; overflow-x: auto">
                 <table class="table">
                     <thead>
                         <tr>
-                           
                             <th>
-                                @Html.DisplayNameFor(model => model.InvoiceNo)
+                                @Html.DisplayNameFor(model => model.Id)
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.CustomerName)
+                                @Html.DisplayNameFor(model => model.RequestNo)
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.CustomerNo)
+                                @Html.DisplayNameFor(model => model.QuotationNo)
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.ProductNo)
+                                @Html.DisplayNameFor(model => model.SalesNo)
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.ProductName)
+                                @Html.DisplayNameFor(model => model.OBDNo)
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.InvoicedQty)
+                                @Html.DisplayNameFor(model => model.GoodReceipt)
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.NetValue)
+                                @Html.DisplayNameFor(model => model.PODNo)
                             </th>
                             <th></th>
                         </tr>
                     </thead>
 
                     <tbody>
-                      
                         @foreach (var item in Model)
                         {
                             <tr>
-                               
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.InvoiceNo)
+                                    @Html.DisplayFor(modelItem => item.Id)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.CustomerName)
+                                    @Html.DisplayFor(modelItem => item.RequestNo)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.CustomerNo)
+                                    @Html.DisplayFor(modelItem => item.QuotationNo)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.ProductNo)
+                                    @Html.DisplayFor(modelItem => item.SalesNo)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.ProductName)
+                                    @Html.DisplayFor(modelItem => item.OBDNo)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.InvoicedQty)
+                                    @Html.DisplayFor(modelItem => item.GoodReceipt)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.NetValue)
+                                    @Html.DisplayFor(modelItem => item.PODNo)
                                 </td>
-                               
+                            
                             </tr>
                         }
                     </tbody>
                 </table>
             </div>
         </div>
-        <hr />
-        <div class="text-end p-5">
-            <p class="fw-bold"> Amount : </p>
-            <p class="fw-bold">Tax : </p>
-            <p class="fw-bold">Total Net Amount : </p>
-        </div>
+      
     </div>
     <div class="btn-container text-center">
         <a href="#">
