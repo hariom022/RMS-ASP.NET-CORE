@@ -14,8 +14,8 @@ namespace RMSWeb.Controllers
         }
         public IActionResult Index()
         {
-            IEnumerable<NewPage> model = applicationDb.NewPages;
-            return View(model);
+            var orderSummaryData= applicationDb.OrderSummary.ToList();
+            return View(orderSummaryData);
         }
     }
 }

@@ -39,5 +39,6 @@ namespace RMS.DataAccess.Data
         public DbSet<InvoiceConfirmation> InvoicesConfirmations { get; set; }
         public DbSet<OutboundDeliveryNo> OutboundDelivery { get; set;}
        public DbSet<NewPage> NewPages { get; set; }
+        public DbSet<OrderSummary> OrderSummary { get; set; }
     }
 }
